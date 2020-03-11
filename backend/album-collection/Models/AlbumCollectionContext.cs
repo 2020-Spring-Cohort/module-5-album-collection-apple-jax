@@ -9,7 +9,8 @@ namespace album_collection.Models
 {
     public class Albumcollectioncontext : DbContext
     {
-        private ModelBuilder modelBuilder;
+       private ModelBuilder modelBuilder;
+                
         public DbSet<Artist> Artists { get; set; }
         public DbSet<Album> Albums { get; set; }
         public DbSet<Song> Songs { get; set; }
@@ -27,13 +28,13 @@ namespace album_collection.Models
       
             protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Artist>.HasData(
-                new Artist
+             modelBuilder.Entity<Artist>().HasData(
+                 new Artist
                 {
                     Id = 1,
                     Name = "Pac-Man",
                     // Description = "Yellow fruit-eating monster enjoys cherries but not ghosts",
-                    Image = "/img/pacman.jpg"
+                    Image = "/img/pacman.jpg",
                 });
             base.OnModelCreating(modelBuilder);
         }
