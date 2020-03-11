@@ -32,9 +32,29 @@ namespace album_collection.Models
                  new Artist
                 {
                     Id = 1,
-                    Name = "Pac-Man",
-                    // Description = "Yellow fruit-eating monster enjoys cherries but not ghosts",
-                    Image = "/img/pacman.jpg",
+                    Name = "Usher",
+                    Age = 25,
+                    Image = "img",
+                    RecordLabel = "columbia records",
+                    HomeTown = "atlanta",
+                });
+            modelBuilder.Entity<Song>().HasData(
+                new Song
+                {
+                    Id = 1,
+                    Title = "Confessions",
+                    Duration = "3:12",
+                    Link = "song.com",
+                    AlbumId = 1,
+                });
+            modelBuilder.Entity<Album>().HasData(
+                new Album
+                {
+                    Id = 1,
+                    Title = "Lock and Key",
+                    RecordLabel = "columbia records",
+                    Image = "img",
+                    ArtistId = 1,
                 });
             base.OnModelCreating(modelBuilder);
         }
