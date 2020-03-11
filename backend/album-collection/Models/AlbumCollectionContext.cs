@@ -21,5 +21,12 @@ namespace album_collection.Models
 
             base.OnConfiguring(optionsBuilder);
         }
+
+        protected override void onModelCreating(ModelBuilder modelbuilder)
+        {
+
+        }
+
+
     }
 }
