@@ -24,7 +24,8 @@ namespace album_collection.Models
             base.OnConfiguring(optionsBuilder);
         }
 
-        protected override void onModelCreating(ModelBuilder modelbuilder)
+      
+            protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Artist>.HasData(
                 new Artist
