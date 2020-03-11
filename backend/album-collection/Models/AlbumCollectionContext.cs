@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using album_collection.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ namespace album_collection.Models
 {
     public class Albumcollectioncontext : DbContext
     {
+        private ModelBuilder modelBuilder;
         public DbSet<Artist> Artists { get; set; }
         public DbSet<Album> Albums { get; set; }
         public DbSet<Song> Songs { get; set; }
@@ -24,7 +26,15 @@ namespace album_collection.Models
 
         protected override void onModelCreating(ModelBuilder modelbuilder)
         {
-
+            modelBuilder.Entity<Artist>.HasData(
+                new Artist
+                {
+                    Id = 1,
+                    Name = "Pac-Man",
+                    // Description = "Yellow fruit-eating monster enjoys cherries but not ghosts",
+                    Image = "/img/pacman.jpg"
+                });
+            base.OnModelCreating(modelBuilder);
         }
 
 
