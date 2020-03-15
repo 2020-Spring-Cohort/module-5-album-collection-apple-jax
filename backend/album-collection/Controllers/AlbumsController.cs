@@ -14,12 +14,6 @@ namespace album_collection.Controllers
     [ApiController]
     public class AlbumsController : ControllerBase
     {
-       // private readonly Albumcollectioncontext _context;
-
-        //public AlbumsController(Albumcollectioncontext context)
-        //{
-        //    _context = context;
-        //}
 
         IRepository<Album> albumRepo;
 
@@ -29,14 +23,6 @@ namespace album_collection.Controllers
         }
 
         //GET: api/Albums
-        //[HttpGet]
-        // public async Task<ActionResult<IEnumerable<Album>>> GetAlbums()
-        // {
-        //     //return await _context.Albums.ToListAsync();
-
-        //     return await albumRepo.GetAll();
-        // }
-
         [HttpGet]
         public IEnumerable<Album> GetAlbum()
         {
@@ -44,82 +30,43 @@ namespace album_collection.Controllers
         }
 
         // GET: api/Albums/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Album>> GetAlbum(int id)
-        //{
-        //    var album = await _context.Albums.FindAsync(id);
+        [HttpGet("{id}")]
+        public ActionResult<Album> GetAlbum(int id)
+        {
+            var myAlbum = albumRepo.GetById(id);
+            return myAlbum;
+        }
 
-        //    if (album == null)
-        //    {
-        //        return NotFound();
-        //    }
+        // PUT: api/Albums/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
+        [HttpPut("{id}")]
+        public IActionResult PutAlbum(int id, Album album)
+        {
+            var myAlbum = albumRepo.GetById(id);
+            albumRepo.Update(myAlbum);
+            return NoContent();
+        }
 
-        //    return album;
-        //}
 
-        //// PUT: api/Albums/5
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        //// more details see https://aka.ms/RazorPagesCRUD.
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutAlbum(int id, Album album)
-        //{
-        //    if (id != album.Id)
-        //    {
-        //        return BadRequest();
-        //    }
+        // POST: api/Albums
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
+        [HttpPost]
+        public ActionResult<Album> PostAlbum(Album album)
+        {
+            albumRepo.Create(album);
+            return NoContent();
+        }
 
-        //    _context.Entry(album).State = EntityState.Modified;
+        // DELETE: api/Albums/5
+        [HttpDelete("{id}")]
+        public ActionResult<Album> DeleteAlbum(int id)
+        {
+            var myAlbum = albumRepo.GetById(id);
+            albumRepo.Delete(myAlbum);
+            return NoContent();
+        }
 
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!AlbumExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
-
-        //// POST: api/Albums
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        //// more details see https://aka.ms/RazorPagesCRUD.
-        //[HttpPost]
-        //public async Task<ActionResult<Album>> PostAlbum(Album album)
-        //{
-        //    _context.Albums.Add(album);
-        //    await _context.SaveChangesAsync();
-
-        //    return CreatedAtAction("GetAlbum", new { id = album.Id }, album);
-        //}
-
-        //// DELETE: api/Albums/5
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult<Album>> DeleteAlbum(int id)
-        //{
-        //    var album = await _context.Albums.FindAsync(id);
-        //    if (album == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    _context.Albums.Remove(album);
-        //    await _context.SaveChangesAsync();
-
-        //    return album;
-        //}
-
-        //private bool AlbumExists(int id)
-        //{
-        //    return _context.Albums.Any(e => e.Id == id);
-        //}
     }
 }
