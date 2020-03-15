@@ -15,18 +15,18 @@ namespace album_collection.Controllers
     public class ArtistsController : ControllerBase
     {
 
-        IRepository<Artist> albumRepo;
+        IRepository<Artist> artistRepo;
 
-        public ArtistsController(IRepository<Artist> albumRepo)
+        public ArtistsController(IRepository<Artist> artistRepo)
         {
-            this.albumRepo = albumRepo;
+            this.artistRepo = artistRepo;
         }
 
         //GET: api/Artists
         [HttpGet]
         public IEnumerable<Artist> GetArtists()
         {
-            return albumRepo.GetAll();
+            return artistRepo.GetAll();
         }
 
 
@@ -34,8 +34,8 @@ namespace album_collection.Controllers
         [HttpGet("{id}")]
         public ActionResult<Artist> GetArtists(int id)
         {
-            var myAlbum = albumRepo.GetById(id);
-            return myAlbum;
+            var myArtist = artistRepo.GetById(id);
+            return myArtist;
         }
 
         // PUT: api/Artists/5
@@ -44,8 +44,10 @@ namespace album_collection.Controllers
         [HttpPut("{id}")]
         public IActionResult PutArtist(int id, Artist artist)
         {
-            var myAlbum = albumRepo.GetById(id);
-            albumRepo.Update(myAlbum);
+            var myArtist = artistRepo.GetById(id);
+
+            
+            artistRepo.Update(myArtist);
             return NoContent();
         }
 
@@ -56,7 +58,7 @@ namespace album_collection.Controllers
         [HttpPost]
         public ActionResult<Artist> PostArtist(Artist artist)
         {
-            albumRepo.Create(artist);
+            artistRepo.Create(artist);
             return NoContent();
         }
 
@@ -64,8 +66,8 @@ namespace album_collection.Controllers
         [HttpDelete("{id}")]
         public ActionResult<Artist> DeleteArtist(int id)
         {
-            var myAlbum = albumRepo.GetById(id);
-            albumRepo.Delete(myAlbum);
+            var myArtist = artistRepo.GetById(id);
+            artistRepo.Delete(myArtist);
             return NoContent();
         }
 

@@ -44,6 +44,8 @@ namespace album_collection.Controllers
         public IActionResult PutAlbum(int id, Album album)
         {
             var myAlbum = albumRepo.GetById(id);
+
+
             albumRepo.Update(myAlbum);
             return NoContent();
         }
