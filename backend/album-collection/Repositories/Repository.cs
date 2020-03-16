@@ -55,5 +55,16 @@ namespace album_collection.Repositories
         {
             return db.Set<T>().ToList();
         }
+
+        // Sam- can you check this syntax for return of data from GetAll to the
+        // original GetAll action in your Controller?  
+        // I believe Controller is expecting return type to be wrapped in a Task.
+
+        //public async Task<IEnumerable<T>> GetAll()
+        //{
+        //    return await db.Set<T>().ToListAsync();
+        //}
+
+
     }
 }
