@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 using album_collection.Controllers;
+using NSubstitute;
 
 namespace album_collection.Tests
 {
