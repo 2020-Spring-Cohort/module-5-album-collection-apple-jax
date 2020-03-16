@@ -1,0 +1,79 @@
+/*
+Orange color: #e67e22
+
+*/
+
+
+/* ----------------------------------------------- */
+/* BASIC SETUP */
+/* ----------------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: #fff;
+    color: #555;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+}
+
+.clearfix {zoom: 1;}
+.clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+/* ----------------------------------------------- */
+/* REUSABLE COMPONENTS */
+/* ----------------------------------------------- */
+.japple{
+    opacity: .02;
+    transform:translate(0);
+         position: absolute;
+
+    top: 12%;
+    left: 0%;
+}
+
+
+
+
+.japple2{
+    opacity: .07;
+    transform:translate(0);
+         position: absolute;
+
+    top: 0%;
+    right: 50%;
+    
+   
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+
+
+  display: inline-block;
+  position: relative;
+  
+  overflow: hidden;
+  border-radius: 50%;
+  
+transform:translate(0);
+         position: absolute;
+      
+    
+    color:#3cf784; 
+     font-size: 45px;
+ 
+   color:#fff; 
+
+}
