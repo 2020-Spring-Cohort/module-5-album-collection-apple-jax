@@ -44,10 +44,12 @@ namespace album_collection.Controllers
         [HttpPut("{id}")]
         public IActionResult PutArtist(int id, Artist artist)
         {
-            var myArtist = artistRepo.GetById(id);
+            if (id != artist.Id)
+            {
+                return BadRequest();
+            }
 
-            
-            artistRepo.Update(myArtist);
+            artistRepo.Update(artist);
             return NoContent();
         }
 

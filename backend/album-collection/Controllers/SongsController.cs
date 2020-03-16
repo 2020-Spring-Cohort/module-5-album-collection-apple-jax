@@ -42,10 +42,14 @@ namespace album_collection.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public IActionResult PutSong(int id, Song Song)
+        public IActionResult PutSong(int id, Song song)
         {
-            var mySong = songRepo.GetById(id);
-            songRepo.Update(mySong);
+            if (id != song.Id)
+            {
+                return BadRequest();
+            }
+
+            songRepo.Update(song);
             return NoContent();
         }
 
@@ -54,9 +58,10 @@ namespace album_collection.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public ActionResult<Song> PostSong(Song Song)
+        public ActionResult<Song> PostSong(Song song)
         {
-            songRepo.Create(Song);
+            
+            songRepo.Create(song);
             return NoContent();
         }
 
@@ -64,6 +69,7 @@ namespace album_collection.Controllers
         [HttpDelete("{id}")]
         public ActionResult<Song> DeleteSong(int id)
         {
+
             var mySong = songRepo.GetById(id);
             songRepo.Delete(mySong);
             return NoContent();
