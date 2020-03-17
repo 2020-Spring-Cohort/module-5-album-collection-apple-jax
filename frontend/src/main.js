@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
 import Artists from './components/Artists';
-//import apiActions from './api/apiActions';
+import apiActions from './api/apiActions';
 
 export default pageBuild;
 
@@ -36,7 +36,7 @@ function navArtists(){
     const app = document.querySelector('#app');
 
     artistsButton.addEventListener("click", function() {
-        apiActions.getRequest("https://localhost:44393/api/artists",
+        apiActions.getRequest("https://localhost:44313/api/artists",
             artists => {
                 console.log(artists);
                 app.innerHTML = Artists(artists);
@@ -44,19 +44,19 @@ function navArtists(){
         )
       });
 
-      app.addEventListener("click", function(){
-        if(event.target.classList.contains('add-artist__submit')){
-            const artist = event.target.parentElement.querySelector('.add-artist__artistName').value;
-            console.log(artist);
+    //   app.addEventListener("click", function(){
+    //     if(event.target.classList.contains('add-artist__submit')){
+    //         const artist = event.target.parentElement.querySelector('.add-artist__artistName').value;
+    //         console.log(artist);
 
-            apiActions.postRequest(
-                "https://localhost:44393/api/artists",
-                artist,
-                newArtist => {
-                    console.log("Artists returned from back end");
-                    console.log(newArtist);
-                }
-            )
-        }
-    })
+    //         apiActions.postRequest(
+    //             "https://localhost:44393/api/artists",
+    //             artist,
+    //             newArtist => {
+    //                 console.log("Artists returned from back end");
+    //                 console.log(newArtist);
+    //             }
+    //         )
+    //     }
+    // })
 }
