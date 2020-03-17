@@ -2,13 +2,36 @@
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+       
         <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+        <link rel="stylesheet" type="text/css" href="resources/css/queries.css">
         <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
         <title>Apple Jax Music</title>
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+    
     </head><body><div><img class="japple" src="resources/css/img/reinvently-insights.gif" width='1600' height='650' ></div></body>
+    
+    
     <div><img class="japple2" src="https://media2.giphy.com/media/5UI3WAZIDPgR2vowL3/giphy.gif" width='1600' height='750' >
     </div>
-<body>
+    <body>
         <header>
             <nav>
                 <div class="row">
@@ -17,15 +40,261 @@
                     <ul class="main-nav js--main-nav">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="#songs">Songs</a></li>
-                        <li><a href="#albums">Albums</a></li>
+                        <li><a href="#albums">Albums</a></li>                        
                         <li><a href="#artists">Artists</a></li>
                     </ul>
+                    <a class="mobile-nav-icon js--nav-icon"><i class="ion-navicon-round"></i></a>
                 </div>
             </nav>
-		<div class="hero-text-box">
-            <h1>Apple Jax Music<br>The Best Music Ever</h1>
-            <a class="btn btn-full js--scroll-to-plans" href="#">Start</a>
-            <a class="btn btn-ghost js--scroll-to-start" href="#">Search</a>
-        </div>
-	</header>
-</body>
+            <div class="hero-text-box">
+                <h1>Apple Jax Music<br>The Best Music Ever</h1>
+                <a class="btn btn-full js--scroll-to-plans" href="#">Start</a>
+                <a class="btn btn-ghost js--scroll-to-start" href="#">Search</a>
+            </div>
+            
+        </header>
+        
+         
+        
+        <section class="section-features js--section-features" id="songs">
+            <br><br>  <br>  <br><br><br><h2>S o n g s</h2>
+    <p id="app"></p>
+  
+    <script>
+        function fetchData()
+        {
+           
+              fetch("https://localhost:44313/api/songs")
+            .then(response => {
+                if(!response.ok) {
+                    throw Error("Error");
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                const html = data
+                .map(user => {
+                    return `
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Duration</th>
+    <th>Link</th>
+  </tr>
+  <tr>
+    <td>${user.title}</td>
+    <td>${user.duration}</td>
+    <td>${user.link}</td>
+  </tr>
+  
+
+`;
+                    
+                })
+                .join("");
+                console.log(html);
+                document.querySelector("#app").insertAdjacentHTML("afterbegin" , html);
+          /*        
+            position
+             A DOMString representing the position relative to the element; must be one of the following strings:
+            'beforebegin': Before the element itself.
+            'afterbegin': Just inside the element, before its first child.
+            'beforeend': Just inside the element, after its last child.
+            'afterend': After the element itself.
+            text      
+            */      
+                  
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        }
+        
+        fetchData();
+        
+        </script>
+        </section>
+    
+        
+    <br> <br> <br> <br><br> <br> <br>
+        
+    
+    <section class="section-features js--section-features" id="albums">
+        <br><br>  <br>  <br><br>  <br><h2>A l b u m e s</h2>  
+    <p id="app2"></p>
+  
+    <script>
+        function fetchData()
+        {
+          
+              fetch("https://localhost:44313/api/albums")
+            .then(response => {
+                if(!response.ok) {
+                    throw Error("Error");
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                const html = data
+                .map(user => {
+                    return `
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Image</th>
+    <th>RecordLabel</th>
+  </tr>
+  <tr>
+    <td>${user.title}</td>
+    <td>${user.image}</td>
+    <td>${user.recordLabel}</td>
+  </tr>
+  
+
+`;
+                    
+                })
+                .join("");
+                console.log(html);
+                document.querySelector("#app2").insertAdjacentHTML("afterbegin" , html);
+          /*        
+            position
+             A DOMString representing the position relative to the element; must be one of the following strings:
+            'beforebegin': Before the element itself.
+            'afterbegin': Just inside the element, before its first child.
+            'beforeend': Just inside the element, after its last child.
+            'afterend': After the element itself.
+            text      
+            */      
+                  
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        }
+        
+        fetchData();
+        
+        </script>
+        </section>
+        
+        
+        
+        
+        <br> <br> <br> <br><br> <br> <br>
+        
+    
+    <section class="section-features js--section-features" id="artists">
+        <br><br>  <br>  <br><br>  <br><h2>A r t i s t s</h2>  
+    <p id="app3"></p>
+  
+    <script>
+        function fetchData()
+        {
+           
+              fetch("https://localhost:44313/api/artists")
+            .then(response => {
+                if(!response.ok) {
+                    throw Error("Error");
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                const html = data
+                .map(user => {
+                    return `
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>HomeTown</th>
+  </tr>
+  <tr>
+    <td>${user.name}</td>
+    <td>${user.age}</td>
+    <td>${user.homeTown}</td>
+  </tr>
+  
+
+`;
+                    
+                })
+                .join("");
+                console.log(html);
+                document.querySelector("#app3").insertAdjacentHTML("afterbegin" , html);
+          /*        
+            position
+             A DOMString representing the position relative to the element; must be one of the following strings:
+            'beforebegin': Before the element itself.
+            'afterbegin': Just inside the element, before its first child.
+            'beforeend': Just inside the element, after its last child.
+            'afterend': After the element itself.
+            text      
+            */      
+                  
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        }
+        
+        fetchData();
+        
+        </script>
+        </section>
+        <body>
+    <form id="form" method="post">
+    <input type="text" id="name" placeholder="Name" />
+    <input type="text" id="homeTown" placeholder="Home Town" />
+     <input type="number" id="age" placeholder="Age" />
+     <input type="submit" value="Add Artist" />
+    
+    </form>
+    <script>
+       
+   var form = document.getElementById('form')
+   
+   form.addEventListener('submit',function(e){
+       
+       e.preventDefault()
+       
+       var name1 = document.getElementById('name').value
+       var homeTown1 = document.getElementById('homeTown').value
+       var age1 = document.getElementById('age').value
+       
+       
+        fetch('https://localhost:44313/api/artists',
+       {
+        method: 'Post' ,
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify({
+            name: name1,
+            homeTown: homeTown1,
+            age:37;
+        })
+        
+    }).then(res => {
+        return res.json()
+    })
+        .then(data => console.log(data))
+        .catch(error => console.log('error'))
+        
+       
+   })
+    
+    
+    </script>
+    
+    
+    
+    </body>
+        <br><br><br>
+    </body>
+    
+</html>
+        
