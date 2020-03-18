@@ -10,9 +10,9 @@ export default function Songs(songs){
         `
     }).join("")}
     
-     <section class="add-song">
+    <section class="add-song">
         <input class="add-song__songTitle" type="text" placeholder="Add a song">
         <button class="add-song__submit">Add a song</button>
-     </section>
+    </section>
     `;
 }
