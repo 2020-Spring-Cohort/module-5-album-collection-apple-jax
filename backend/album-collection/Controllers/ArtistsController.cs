@@ -55,13 +55,11 @@ namespace album_collection.Controllers
 
 
         // POST: api/Artists
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public ActionResult<Artist> PostArtist(Artist artist)
+        public IEnumerable<Artist> PostArtist([FromBody] Artist value)
         {
-            artistRepo.Create(artist);
-            return NoContent();
+            artistRepo.Create(value);
+            return artistRepo.GetAll();
         }
 
         // DELETE: api/Artists/5
