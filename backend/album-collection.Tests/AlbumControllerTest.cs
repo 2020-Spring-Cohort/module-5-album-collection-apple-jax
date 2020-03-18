@@ -14,12 +14,10 @@ namespace album_collection.Tests
     {
         AlbumsController underTest;
         IRepository<Album> albumRepo;
-
         public AlbumControllerTest()
         {
             albumRepo = Substitute.For<IRepository<Album>>();
             underTest = new AlbumsController(albumRepo);
-
 
         }
 
@@ -34,15 +32,14 @@ namespace album_collection.Tests
                 new Album(3, "Third Album", "columbia records", "img", 1)
 
             };
-
-            underTest.GetAlbum().Returns(myColleciton);
+            underTest.GetAlbum().Returns(myCollection);
 
             //Act
             var result = underTest.GetAlbum();
             var countOfAlbums = result.Count();
 
             //Assert
-            Assert.Equal(2, countOfAlbums);
+            Assert.Equal(3, countOfAlbums);
         }
 
     }
