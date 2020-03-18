@@ -66,6 +66,27 @@ namespace album_collection.Tests
                 Assert.Equal(expectedSongs, result.ToList());
             }
 
+            [Fact]
+            public void Get_by_id_Returns_Chosen_Song()
+            {
+                // arrange
+                var id = 2;
+                var firstSong = new Song(1, "First Song", "3:12", "song.com", 1);
+                var secondSong = new Song(2, "Second Song", "3:12", "song.com", 1);
+                var expectedSongs = new List<Song>();
+                expectedSongs.Add(firstSong);
+                expectedSongs.Add(secondSong);
+
+                // We need to mock the Repository's GetById() method
+                songRepo.GetById(id).Returns(secondSong);
+
+                // act
+                var result = underTest.GetSongs(id);
+
+                // assert
+                Assert.Equal(secondSong, result);
+            }
+
         }
            
     }
