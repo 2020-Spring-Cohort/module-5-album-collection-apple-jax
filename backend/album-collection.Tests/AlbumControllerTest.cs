@@ -22,7 +22,7 @@ namespace album_collection.Tests
         }
 
         [Fact]
-        public void Get_Returns_All_Albums()
+        public void Get_Returns_3_Albums()
         {
             //Arrange
             var myCollection = new List<Album>()
@@ -41,6 +41,29 @@ namespace album_collection.Tests
             //Assert
             Assert.Equal(3, countOfAlbums);
         }
+
+        // Alternative test for Get() action
+        [Fact]
+        public void Get_Returns_List_of_Albums()
+        {
+            // arrange
+            var expectedAlbums = new List<Album>()
+            {
+                new Album(1, "First Album", "columbia records", "img", 1),
+                new Album(2, "Second Album", "columbia records", "img", 1),
+                new Album(3, "Third Album", "columbia records", "img", 1)
+
+            };
+
+            underTest.GetAlbum().Returns(expectedAlbums);
+
+            // act
+            var result = underTest.GetAlbum();
+
+            // assert
+            Assert.Equal(expectedAlbums, result.ToList());
+        }
+
 
 
 
