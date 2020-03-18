@@ -44,26 +44,32 @@ namespace album_collection.Controllers
         //}
 
 
-
-
-
         // PUT: api/Albums/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public IActionResult PutAlbum(int id, Album album)
+        public IEnumerable<Album> PutAlbum([FromBody] Album album)
         {
-            if (id != album.Id)
-            {
-                return BadRequest();
-            }
-
             albumRepo.Update(album);
-            return NoContent();
+            return albumRepo.GetAll();
         }
 
 
-        // POST: api/Todos
+        //// PUT: api/Albums/5
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        //// more details see https://aka.ms/RazorPagesCRUD.
+        //[HttpPut("{id}")]
+        //public IActionResult PutAlbum(int id, Album album)
+        //{
+        //    if (id != album.Id)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    albumRepo.Update(album);
+        //    return NoContent();
+        //}
+
+
+        // POST: api/Albums
         [HttpPost]
         public IEnumerable<Album> PostAlbum([FromBody] Album value)
         {

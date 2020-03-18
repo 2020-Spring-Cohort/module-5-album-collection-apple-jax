@@ -137,5 +137,32 @@ namespace album_collection.Tests
             Assert.All(result, item => Assert.Contains("Second Album", item.Title));
         }
 
+        [Fact]
+        public void Put_Updates_Todo()
+        {
+            // arrange
+            var originalAlbum = new Album(1, "First Album", "columbia records", "img", 1);
+            var expectedAlbum = new List<Album>()
+            {
+                originalAlbum
+            };
+            var updatedAlbum = new Album(1, "First Album Update", "columbia records", "img", 1);
+
+            // What are the dependencies for the controller's Update action?
+            // They are Update() and GetAll()
+            // To mock Update() we need to modify our fake list with the Remove() then Add() methods 
+            albumRepo.When(t => albumRepo.Update(updatedAlbum))
+                .Do(Callback.First(t => expectedAlbum.Remove(originalAlbum))
+                .Then(t => expectedAlbum.Add(updatedAlbum)));
+            albumRepo.GetAll().Returns(expectedAlbum);
+
+            // act
+            var result = underTest.PutAlbum(updatedAlbum);
+
+            // assert
+            // Below is an alternative to Assert.Equal(expectedTodos, result.ToList());
+            Assert.All(result, item => Assert.Contains("First Album Update", item.Title));
+        }
+
     }
 }
