@@ -3,16 +3,20 @@ export default function Artists(artists){
     <ul>
     ${artists.map(artist => {
         return `
-        <li>
-            <h3>${artist.id}</h3>
-        </li> 
+        
+             <h3><p > Artist Id : ${artist.id} </p></h3>
+             <h3><p > Artist Name : ${artist.name} </p></h3>
+             <h3><p > Artist Age : ${artist.age} </p></h3>
+             <h3><p > Artist Home Town : ${artist.homeTown} </p></h3>
+       
         `
     }).join("")}
     </ul>
 
-    <section class="add-artist">
-            <input class="add-artist__artistName" type="text" placeholder="Add an Artist">
-            <button class="add-artist__submit">Add an Artist</button>
-        </section>
+    // <section class="add-artist">
+    //         <input class="add-artist__artistName" type="text" placeholder="Add an Artist">
+    //         <button class="add-artist__submit">Add an Artist</button>
+    //     </section>
     `;
 }
+

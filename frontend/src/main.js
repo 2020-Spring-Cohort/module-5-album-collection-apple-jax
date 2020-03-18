@@ -31,20 +31,35 @@ function navHome(){
     });
 }
 
-function navArtists(){
-    const artistsButton = document.querySelector(".nav__artists");
-    const app = document.querySelector('#app');
 
+
+function navArtists(){
+    const artistsButton = document.querySelector('.nav__artists');
+    const app = document.querySelector('#app');
+    
     artistsButton.addEventListener("click", function() {
-        apiActions.getRequest("https://localhost:44313/api/artists",
+        apiActions.getRequest('https://localhost:44313/api/artists',
             artists => {
                 console.log(artists);
                 app.innerHTML = Artists(artists);
-            }
+        }
         )
-      });
+    });
+}
 
-    //   app.addEventListener("click", function(){
+// function navArtists(){
+//     const todosButton = document.querySelector(".nav__artists");
+//     artistsButton.addEventListener("click", function() {
+//         apiActions.getRequest("https://localhost:44313/api/artists",
+//             artists => {
+//                 console.log(artists);
+//                 document.querySelector('#app').innerHTML = Artists(artists);
+//             }
+//         )
+       
+//       });
+// }
+//   app.addEventListener("click", function(){
     //     if(event.target.classList.contains('add-artist__submit')){
     //         const artist = event.target.parentElement.querySelector('.add-artist__artistName').value;
     //         console.log(artist);
@@ -59,4 +74,3 @@ function navArtists(){
     //         )
     //     }
     // })
-}
