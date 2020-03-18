@@ -85,6 +85,30 @@ namespace album_collection.Tests
             Assert.Equal(secondAlbum, result);
         }
 
+        [Fact]
+        public void Post_Creates_New_Album()
+        {
+            // arrange
+            var newAlbum = new Album(1, "First Album", "columbia records", "img", 1);
+            var albumList = new List<Album>();
+
+            // Use When..Do to substitute for methods that don't return a value, like the Repository method Create()
+            // When() allows us to call the method on the substitute and pass an argument
+            // Do() allows us to pass a callback function that executes when the method is called
+            albumRepo.When(t => t.Create(newAlbum))
+                .Do(t => albumList.Add(newAlbum));
+
+            albumRepo.GetAll().Returns(albumList);
+
+            // act
+            var result = underTest.PostAlbum(newAlbum);
+
+            // assert
+            Assert.Contains(newAlbum, result);
+        }
+
+
+
 
     }
 }

@@ -29,13 +29,23 @@ namespace album_collection.Controllers
             return albumRepo.GetAll();
         }
 
-        // GET: api/Albums/5
-        [HttpGet("{id}")]
-        public ActionResult<Album> GetAlbum(int id)
+        [HttpGet("{id}", Name = "GetAlbum")]
+        public Album GetAlbum(int id)
         {
-            var myAlbum = albumRepo.GetById(id);
-            return myAlbum;
+            return albumRepo.GetById(id);
         }
+
+        // GET: api/Albums/5
+        //[HttpGet("{id}")]
+        //public ActionResult<Album> GetAlbum(int id)
+        //{
+        //    var myAlbum = albumRepo.GetById(id);
+        //    return myAlbum;
+        //}
+
+
+
+
 
         // PUT: api/Albums/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
@@ -53,15 +63,23 @@ namespace album_collection.Controllers
         }
 
 
-        // POST: api/Albums
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
+        // POST: api/Todos
         [HttpPost]
-        public ActionResult<Album> PostAlbum(Album album)
+        public IEnumerable<Album> PostAlbum([FromBody] Album value)
         {
-            albumRepo.Create(album);
-            return NoContent();
+            albumRepo.Create(value);
+            return albumRepo.GetAll();
         }
+
+        //// POST: api/Albums
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        //// more details see https://aka.ms/RazorPagesCRUD.
+        //[HttpPost]
+        //public ActionResult<Album> PostAlbum(Album album)
+        //{
+        //    albumRepo.Create(album);
+        //    return NoContent();
+        //}
 
         // DELETE: api/Albums/5
         [HttpDelete("{id}")]
