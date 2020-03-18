@@ -45,7 +45,26 @@ namespace album_collection.Tests
                 Assert.Equal(3, countOfSongs);
             }
 
+            // Alternative test for Get() action
+            [Fact]
+            public void Get_Returns_List_of_Songs()
+            {
+                // arrange
+                var expectedSongs = new List<Song>()
+            {
+                new Song(1,"First Song","3:12","song.com", 1),
+                new Song(2,"Second Song","3:12","song.com", 1),
+                new Song(3,"Third Song","3:12","song.com", 1)
+            };
 
+                songRepo.GetAll().Returns(expectedSongs);
+
+                // act
+                var result = underTest.GetSongs();
+
+                // assert
+                Assert.Equal(expectedSongs, result.ToList());
+            }
 
         }
            
