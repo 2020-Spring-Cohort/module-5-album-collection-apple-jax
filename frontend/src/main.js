@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
 import Artists from './components/Artists';
+import Songs from './components/Songs';
 import apiActions from './api/apiActions';
 
 export default pageBuild;
@@ -12,6 +13,7 @@ function pageBuild(){
     footer();
     navHome();
     navArtists();
+    navSongs();
 }
 
 function header() {
@@ -31,8 +33,6 @@ function navHome(){
     });
 }
 
-
-
 function navArtists(){
     const artistsButton = document.querySelector('.nav__artists');
     const app = document.querySelector('#app');
@@ -42,6 +42,20 @@ function navArtists(){
             artists => {
                 console.log(artists);
                 app.innerHTML = Artists(artists);
+        }
+        )
+    });
+}
+
+function navSongs(){
+    const songsButton = document.querySelector('.nav__songs');
+    const app = document.querySelector('#app');
+    
+    songsButton.addEventListener("click", function() {
+        apiActions.getRequest('https://localhost:44313/api/songs',
+            songs => {
+                console.log(songs);
+                app.innerHTML = Songs(songs);
         }
         )
     });

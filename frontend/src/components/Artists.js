@@ -1,6 +1,6 @@
 export default function Artists(artists){
     return `
-    <ul>
+   
     ${artists.map(artist => {
         return `
         
@@ -11,7 +11,7 @@ export default function Artists(artists){
        
         `
     }).join("")}
-    </ul>
+    
 
     // <section class="add-artist">
     //         <input class="add-artist__artistName" type="text" placeholder="Add an Artist">
@@ -19,4 +19,3 @@ export default function Artists(artists){
     //     </section>
     `;
 }
-
