@@ -32,7 +32,7 @@ namespace album_collection.Tests
                 new Album(3, "Third Album", "columbia records", "img", 1)
 
             };
-            underTest.GetAlbum().Returns(myCollection);
+            albumRepo.GetAll().Returns(myCollection);
 
             //Act
             var result = underTest.GetAlbum();
@@ -55,7 +55,7 @@ namespace album_collection.Tests
 
             };
 
-            underTest.GetAlbum().Returns(expectedAlbums);
+            albumRepo.GetAll().Returns(expectedAlbums);
 
             // act
             var result = underTest.GetAlbum();
