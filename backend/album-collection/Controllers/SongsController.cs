@@ -29,85 +29,39 @@ namespace album_collection.Controllers
             return songRepo.GetAll();
         }
 
-
-        // GET: api/Songs/5
-        [HttpGet("{id}")]
-        public ActionResult<Song> GetSongs(int id)
+        [HttpGet("{id}", Name = "GetSongs")]
+        public Song GetSongs(int id)
         {
-            var mySong = songRepo.GetById(id);
-            return mySong;
+            return songRepo.GetById(id);
         }
 
-        // PUT: api/Songs/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
+
+        // PUT: api/Albums/5
         [HttpPut("{id}")]
-        public IActionResult PutSong(int id, Song song)
+        public IEnumerable<Song> PutSong([FromBody] Song song)
         {
-            if (id != song.Id)
-            {
-                return BadRequest();
-            }
-
             songRepo.Update(song);
-            return NoContent();
+            return songRepo.GetAll();
         }
 
 
-        // POST: api/Songs
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
+        // POST: api/Artists
         [HttpPost]
-        public ActionResult<Song> PostSong(Song song)
+        public IEnumerable<Song> PostSong([FromBody] Song value)
         {
-            
-            songRepo.Create(song);
-            return NoContent();
+            songRepo.Create(value);
+            return songRepo.GetAll();
         }
 
-        // DELETE: api/Songs/5
-        [HttpDelete("{id}")]
-        public ActionResult<Song> DeleteSong(int id)
-        {
 
+        // DELETE: api/ApiWithActions/5
+        [HttpDelete("{id}")]
+        public IEnumerable<Song> DeleteSong(int id)
+        {
             var mySong = songRepo.GetById(id);
             songRepo.Delete(mySong);
-            return NoContent();
+            return songRepo.GetAll();
         }
-
-   
-        //// PUT: api/Songs/5
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        //// more details see https://aka.ms/RazorPagesCRUD.
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutSong(int id, Song song)
-        //{
-        //    if (id != song.Id)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    _context.Entry(song).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!SongExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
-
       
     }
 }

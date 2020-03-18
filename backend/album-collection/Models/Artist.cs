@@ -15,5 +15,22 @@ namespace album_collection.Models
         public string HomeTown { get; set; }
 
         public virtual ICollection<Album> Albums { get; set; }
+
+        public Artist()
+        {
+
+        }
+
+        public Artist(int id, string name, int age, string image, string recordLabel, string homeTown)
+        {
+            Id = id;
+            Name = name;
+            Age = age;
+            Image = image;
+            RecordLabel = recordLabel;
+            HomeTown = homeTown;
+        }
     }
+
+   
 }

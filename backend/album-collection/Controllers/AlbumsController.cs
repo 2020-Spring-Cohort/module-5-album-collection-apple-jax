@@ -29,47 +29,35 @@ namespace album_collection.Controllers
             return albumRepo.GetAll();
         }
 
-        // GET: api/Albums/5
-        [HttpGet("{id}")]
-        public ActionResult<Album> GetAlbum(int id)
+        [HttpGet("{id}", Name = "GetAlbum")]
+        public Album GetAlbum(int id)
         {
-            var myAlbum = albumRepo.GetById(id);
-            return myAlbum;
+            return albumRepo.GetById(id);
         }
 
         // PUT: api/Albums/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public IActionResult PutAlbum(int id, Album album)
+        public IEnumerable<Album> PutAlbum([FromBody] Album album)
         {
-            if (id != album.Id)
-            {
-                return BadRequest();
-            }
-
             albumRepo.Update(album);
-            return NoContent();
+            return albumRepo.GetAll();
         }
-
 
         // POST: api/Albums
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public ActionResult<Album> PostAlbum(Album album)
+        public IEnumerable<Album> PostAlbum([FromBody] Album value)
         {
-            albumRepo.Create(album);
-            return NoContent();
+            albumRepo.Create(value);
+            return albumRepo.GetAll();
         }
 
-        // DELETE: api/Albums/5
+        // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public ActionResult<Album> DeleteAlbum(int id)
+        public IEnumerable<Album> DeleteAlbum(int id)
         {
             var myAlbum = albumRepo.GetById(id);
             albumRepo.Delete(myAlbum);
-            return NoContent();
+            return albumRepo.GetAll();
         }
 
     }
