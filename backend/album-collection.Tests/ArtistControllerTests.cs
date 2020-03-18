@@ -108,5 +108,34 @@ namespace album_collection.Tests
             Assert.Contains(newArtist, result);
         }
 
+
+        [Fact]
+        public void Delete_Removes_Artist()
+        {
+            // arrange
+            var artistId = 1;
+            var deletedArtist = new Artist(1, "First Artist", 25, "img", "columbia records", "atlanta");
+            var artistList = new List<Artist>()
+            {
+                deletedArtist,
+                new Artist(2, "Second Artist", 25, "img", "columbia records", "atlanta")
+            };
+
+            // our controller's Delete() action is dependent on the Repository's
+            // GetById(), Delete(), and GetAll() actions- they all need to be mocked
+            artistRepo.GetById(artistId).Returns(deletedArtist);
+            artistRepo.When(d => d.Delete(deletedArtist))
+                .Do(d => artistList.Remove(deletedArtist));
+            artistRepo.GetAll().Returns(artistList);
+
+
+            // act
+            var result = underTest.DeleteArtist(artistId);
+
+            // assert
+            // Below is an alternative to Assert.DoesNotContain(deletedTodo, result), 
+            // which does not work in all cases
+            Assert.All(result, item => Assert.Contains("Second Artist", item.Name));
+        }
     }
 }

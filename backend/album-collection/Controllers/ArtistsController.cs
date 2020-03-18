@@ -62,14 +62,16 @@ namespace album_collection.Controllers
             return artistRepo.GetAll();
         }
 
-        // DELETE: api/Artists/5
+        // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public ActionResult<Artist> DeleteArtist(int id)
+        public IEnumerable<Artist> DeleteArtist(int id)
         {
             var myArtist = artistRepo.GetById(id);
             artistRepo.Delete(myArtist);
-            return NoContent();
+            return artistRepo.GetAll();
         }
+
+  
 
     }
 }
