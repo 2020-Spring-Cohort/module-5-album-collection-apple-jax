@@ -4,7 +4,7 @@ export default function Header() {
              <li class='nav__home'>Home</li>
              <li class='nav__albums'>Albums</li>
              <li class='nav__artists'>Artists</li>
-             <li class='nav__songs'>Sons</li>
+             <li class='nav__songs'>Songs</li>
         </ul>
     </nav>` 
 }
