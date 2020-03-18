@@ -16,5 +16,19 @@ namespace album_collection.Models
         [JsonIgnore]
         public virtual Album Album { get; set; }
         public virtual int AlbumId { get; set; }
+
+        public Song()
+        {
+
+        }
+
+        public Song(int id, string title, string duration, string link, int albumId)
+        {
+            Id = id;
+            Title = title;
+            Duration = duration;
+            Link = link;
+            AlbumId = albumId;
+        }
     }
 }

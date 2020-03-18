@@ -30,14 +30,13 @@ namespace album_collection.Controllers
         }
 
 
-        // GET: api/Artists/5
-        [HttpGet("{id}")]
-        public ActionResult<Artist> GetArtists(int id)
+        [HttpGet("{id}", Name = "GetArtists")]
+        public Artist GetArtists(int id)
         {
-            var myArtist = artistRepo.GetById(id);
-            return myArtist;
+            return artistRepo.GetById(id);
         }
 
+  
         // PUT: api/Albums/5
         [HttpPut("{id}")]
         public IEnumerable<Artist> PutArtist([FromBody] Artist artist)

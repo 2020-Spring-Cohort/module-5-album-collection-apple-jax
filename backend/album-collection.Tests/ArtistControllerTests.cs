@@ -82,7 +82,7 @@ namespace album_collection.Tests
             var result = underTest.GetArtists(id);
 
             // assert
-            Assert.Equal(secondArtist, result.Value);
+            Assert.Equal(secondArtist, result);
         }
 
 
