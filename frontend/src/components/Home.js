@@ -1,5 +1,5 @@
 export default function Home(){
     return `
-    <h1>Welcome to Apple Jax Music </h1>
+    <h1 class="apple" >Welcome to Apple Jax Music </h1>
     `;
 }
