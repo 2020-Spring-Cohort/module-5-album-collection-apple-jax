@@ -31,7 +31,6 @@ namespace album_collection.Tests
                 new Artist(1,"First Artist",25, "img","columbia records", "atlanta"),
                 new Artist(2,"Second Artist",25, "img","columbia records", "atlanta"),
                 new Artist(3,"Third Artist",25, "img","columbia records", "atlanta")
-
             };
 
             artistRepo.GetAll().Returns(myCollection);
@@ -42,6 +41,27 @@ namespace album_collection.Tests
 
             //Assert
             Assert.Equal(3, countOfArtists);
+        }
+
+        // Alternative test for Get() action
+        [Fact]
+        public void Get_Returns_List_of_Artists()
+        {
+            // arrange
+            var expectedArtists = new List<Artist>()
+            {
+                new Artist(1,"First Artist",25, "img","columbia records", "atlanta"),
+                new Artist(2,"Second Artist",25, "img","columbia records", "atlanta"),
+                new Artist(3,"Third Artist",25, "img","columbia records", "atlanta")
+            };
+
+            artistRepo.GetAll().Returns(expectedArtists);
+
+            // act
+            var result = underTest.GetArtists();
+
+            // assert
+            Assert.Equal(expectedArtists, result.ToList());
         }
     }
 }
