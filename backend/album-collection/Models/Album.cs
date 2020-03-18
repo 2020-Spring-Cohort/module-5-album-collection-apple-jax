@@ -18,6 +18,19 @@ namespace album_collection.Models
         public virtual int ArtistId { get; set; }
         public virtual ICollection<Song> Songs { get; set; }
 
+        public Album()
+        {
+
+        }
+
+        public Album(int id, string title, string image, string recordLabel, int artistId)
+        {
+            Id = id;
+            Title = title;
+            Image = image;
+            RecordLabel = recordLabel;
+            ArtistId = artistId;
+        }
 
     }
 }
