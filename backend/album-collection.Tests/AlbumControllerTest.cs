@@ -138,7 +138,7 @@ namespace album_collection.Tests
         }
 
         [Fact]
-        public void Put_Updates_Todo()
+        public void Put_Updates_Album()
         {
             // arrange
             var originalAlbum = new Album(1, "First Album", "columbia records", "img", 1);

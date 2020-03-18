@@ -38,21 +38,13 @@ namespace album_collection.Controllers
             return myArtist;
         }
 
-        // PUT: api/Artists/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
+        // PUT: api/Albums/5
         [HttpPut("{id}")]
-        public IActionResult PutArtist(int id, Artist artist)
+        public IEnumerable<Artist> PutArtist([FromBody] Artist artist)
         {
-            if (id != artist.Id)
-            {
-                return BadRequest();
-            }
-
             artistRepo.Update(artist);
-            return NoContent();
+            return artistRepo.GetAll();
         }
-
 
         // POST: api/Artists
         [HttpPost]

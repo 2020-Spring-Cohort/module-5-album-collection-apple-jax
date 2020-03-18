@@ -137,5 +137,32 @@ namespace album_collection.Tests
             // which does not work in all cases
             Assert.All(result, item => Assert.Contains("Second Artist", item.Name));
         }
+
+        [Fact]
+        public void Put_Updates_Artist()
+        {
+            // arrange
+            var originalArtist = new Artist(1, "First Artist", 25, "img", "columbia records", "atlanta");
+            var expectedArtist = new List<Artist>()
+            {
+                originalArtist
+            };
+            var updatedArtist = new Artist(1, "First Artist Updated", 25, "img", "columbia records", "atlanta");
+
+            // What are the dependencies for the controller's Update action?
+            // They are Update() and GetAll()
+            // To mock Update() we need to modify our fake list with the Remove() then Add() methods 
+            artistRepo.When(t => artistRepo.Update(updatedArtist))
+                .Do(Callback.First(t => expectedArtist.Remove(originalArtist))
+                .Then(t => expectedArtist.Add(updatedArtist)));
+            artistRepo.GetAll().Returns(expectedArtist);
+
+            // act
+            var result = underTest.PutArtist(updatedArtist);
+
+            // assert
+            // Below is an alternative to Assert.Equal(expectedTodos, result.ToList());
+            Assert.All(result, item => Assert.Contains("First Artists Update", item.Name));
+        }
     }
 }
