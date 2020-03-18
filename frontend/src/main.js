@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import Artists from './components/Artists';
 import Songs from './components/Songs';
+import Albums from './components/Albums';
 import apiActions from './api/apiActions';
 
 export default pageBuild;
@@ -14,6 +15,7 @@ function pageBuild(){
     navHome();
     navArtists();
     navSongs();
+    navAlbums();
 }
 
 function header() {
@@ -60,6 +62,21 @@ function navSongs(){
         )
     });
 }
+
+function navAlbums(){
+    const albumsButton = document.querySelector('.nav__albums');
+    const app = document.querySelector('#app');
+    
+    albumsButton.addEventListener("click", function() {
+        apiActions.getRequest('https://localhost:44313/api/albums',
+            albums => {
+                console.log(albums);
+                app.innerHTML = Albums(albums);
+        }
+        )
+    });
+}
+
 
 // function navArtists(){
 //     const todosButton = document.querySelector(".nav__artists");
