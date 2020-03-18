@@ -4,10 +4,8 @@ export default function Songs(songs){
     ${songs.map(song => {
         return `
         
-             <h3><p>Title : ${song.title} </p></h3>
-             <h3><p>Duration : ${song.duration} </p></h3>
-             <h3><p> ${song.title} Link : <a href="https://www.youtube.com/watch?v=InPfnkn5Fqk&list=RDInPfnkn5Fqk&start_radio=1" target="_blank"> ${song.link}</a> </p></h3>
-             
+             <h3><a href= ${song.link} title="${song.title} Link" target="_blank">${song.title}</a>- ${song.duration} mins</h3>
+             <br><br>
       
         `
     }).join("")}
