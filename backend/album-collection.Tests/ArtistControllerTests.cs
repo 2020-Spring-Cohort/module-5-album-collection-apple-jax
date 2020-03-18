@@ -21,5 +21,27 @@ namespace album_collection.Tests
 
         }
 
+
+        [Fact]
+        public void Get_Returns_3_Artists()
+        {
+            //Arrange
+            var myCollection = new List<Artist>()
+            {
+                new Artist(1,"First Artist",25, "img","columbia records", "atlanta"),
+                new Artist(2,"Second Artist",25, "img","columbia records", "atlanta"),
+                new Artist(3,"Third Artist",25, "img","columbia records", "atlanta")
+
+            };
+
+            artistRepo.GetAll().Returns(myCollection);
+
+            //Act
+            var result = underTest.GetArtists();
+            var countOfArtists = result.Count();
+
+            //Assert
+            Assert.Equal(3, countOfArtists);
+        }
     }
 }
