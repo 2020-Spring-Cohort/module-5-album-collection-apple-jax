@@ -108,7 +108,34 @@ namespace album_collection.Tests
         }
 
 
+        [Fact]
+        public void Delete_Removes_Album()
+        {
+            // arrange
+            var albumId = 1;
+            var deletedAlbum = new Album(albumId, "First Album", "columbia records", "img", 1);
+            var albumList = new List<Album>()
+            {
+                deletedAlbum,
+                new Album(2,"Second Album", "columbia records", "img", 1)
+            };
 
+            // our controller's Delete() action is dependent on the Repository's
+            // GetById(), Delete(), and GetAll() actions- they all need to be mocked
+            albumRepo.GetById(albumId).Returns(deletedAlbum);
+            albumRepo.When(d => d.Delete(deletedAlbum))
+                .Do(d => albumList.Remove(deletedAlbum));
+            albumRepo.GetAll().Returns(albumList);
+
+
+            // act
+            var result = underTest.DeleteAlbum(albumId);
+
+            // assert
+            // Below is an alternative to Assert.DoesNotContain(deletedTodo, result), 
+            // which does not work in all cases
+            Assert.All(result, item => Assert.Contains("Second Album", item.Title));
+        }
 
     }
 }

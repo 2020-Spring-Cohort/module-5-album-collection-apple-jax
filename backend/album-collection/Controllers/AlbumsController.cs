@@ -81,14 +81,23 @@ namespace album_collection.Controllers
         //    return NoContent();
         //}
 
-        // DELETE: api/Albums/5
+        // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public ActionResult<Album> DeleteAlbum(int id)
+        public IEnumerable<Album> DeleteAlbum(int id)
         {
             var myAlbum = albumRepo.GetById(id);
             albumRepo.Delete(myAlbum);
-            return NoContent();
+            return albumRepo.GetAll();
         }
+
+        //// DELETE: api/Albums/5
+        //[HttpDelete("{id}")]
+        //public ActionResult<Album> DeleteAlbum(int id)
+        //{
+        //    var myAlbum = albumRepo.GetById(id);
+        //    albumRepo.Delete(myAlbum);
+        //    return NoContent();
+        //}
 
     }
 }
