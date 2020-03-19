@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using album_collection.Models;
 
 namespace album_collection.Migrations
 {
     [DbContext(typeof(Albumcollectioncontext))]
-    partial class AlbumcollectioncontextModelSnapshot : ModelSnapshot
+    [Migration("20200319142041_Added img data")]
+    partial class Addedimgdata
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,14 +30,8 @@ namespace album_collection.Migrations
                     b.Property<int>("ArtistId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Comments")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
 
                     b.Property<string>("RecordLabel")
                         .HasColumnType("nvarchar(max)");
@@ -54,9 +50,7 @@ namespace album_collection.Migrations
                         {
                             Id = 1,
                             ArtistId = 1,
-                            Comments = "Here is a great comment",
                             Image = "album1.jpg",
-                            Rating = 5,
                             RecordLabel = "columbia records",
                             Title = "Lock and Key"
                         },
@@ -64,9 +58,7 @@ namespace album_collection.Migrations
                         {
                             Id = 2,
                             ArtistId = 2,
-                            Comments = "Here is a great comment",
                             Image = "album2.jpg",
-                            Rating = 5,
                             RecordLabel = "columbia records",
                             Title = "Artist A Album"
                         },
@@ -74,9 +66,7 @@ namespace album_collection.Migrations
                         {
                             Id = 3,
                             ArtistId = 3,
-                            Comments = "Here is a great comment",
                             Image = "album3.jpg",
-                            Rating = 5,
                             RecordLabel = "columbia records",
                             Title = "Artist B Album"
                         });

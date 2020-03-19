@@ -12,5 +12,6 @@ namespace album_collection.Repositories
         void Create(T obj);
         void Update(T obj);
         void Delete(T obj);
+    
     }
 }

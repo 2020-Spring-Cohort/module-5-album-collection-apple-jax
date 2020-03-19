@@ -30,48 +30,39 @@ namespace album_collection.Controllers
         }
 
 
-        // GET: api/Artists/5
-        [HttpGet("{id}")]
-        public ActionResult<Artist> GetArtists(int id)
+        [HttpGet("{id}", Name = "GetArtists")]
+        public Artist GetArtists(int id)
         {
-            var myArtist = artistRepo.GetById(id);
-            return myArtist;
+            return artistRepo.GetById(id);
         }
 
-        // PUT: api/Artists/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
+  
+        // PUT: api/Albums/5
         [HttpPut("{id}")]
-        public IActionResult PutArtist(int id, Artist artist)
+        public IEnumerable<Artist> PutArtist([FromBody] Artist artist)
         {
-            if (id != artist.Id)
-            {
-                return BadRequest();
-            }
-
             artistRepo.Update(artist);
-            return NoContent();
+            return artistRepo.GetAll();
         }
-
 
         // POST: api/Artists
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public ActionResult<Artist> PostArtist(Artist artist)
+        public IEnumerable<Artist> PostArtist([FromBody] Artist value)
         {
-            artistRepo.Create(artist);
-            return NoContent();
+            artistRepo.Create(value);
+            return artistRepo.GetAll();
         }
 
-        // DELETE: api/Artists/5
+        // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public ActionResult<Artist> DeleteArtist(int id)
+        public IEnumerable<Artist> DeleteArtist(int id)
         {
             var myArtist = artistRepo.GetById(id);
             artistRepo.Delete(myArtist);
-            return NoContent();
+            return artistRepo.GetAll();
         }
+
+  
 
     }
 }

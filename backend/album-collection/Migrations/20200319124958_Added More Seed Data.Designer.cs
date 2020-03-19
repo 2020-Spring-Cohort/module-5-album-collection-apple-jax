@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using album_collection.Models;
 
 namespace album_collection.Migrations
 {
     [DbContext(typeof(Albumcollectioncontext))]
-    partial class AlbumcollectioncontextModelSnapshot : ModelSnapshot
+    [Migration("20200319124958_Added More Seed Data")]
+    partial class AddedMoreSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,14 +30,8 @@ namespace album_collection.Migrations
                     b.Property<int>("ArtistId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Comments")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
 
                     b.Property<string>("RecordLabel")
                         .HasColumnType("nvarchar(max)");
@@ -54,9 +50,7 @@ namespace album_collection.Migrations
                         {
                             Id = 1,
                             ArtistId = 1,
-                            Comments = "Here is a great comment",
-                            Image = "album1.jpg",
-                            Rating = 5,
+                            Image = "img",
                             RecordLabel = "columbia records",
                             Title = "Lock and Key"
                         },
@@ -64,9 +58,7 @@ namespace album_collection.Migrations
                         {
                             Id = 2,
                             ArtistId = 2,
-                            Comments = "Here is a great comment",
-                            Image = "album2.jpg",
-                            Rating = 5,
+                            Image = "img",
                             RecordLabel = "columbia records",
                             Title = "Artist A Album"
                         },
@@ -74,9 +66,7 @@ namespace album_collection.Migrations
                         {
                             Id = 3,
                             ArtistId = 3,
-                            Comments = "Here is a great comment",
-                            Image = "album3.jpg",
-                            Rating = 5,
+                            Image = "img",
                             RecordLabel = "columbia records",
                             Title = "Artist B Album"
                         });
@@ -169,7 +159,7 @@ namespace album_collection.Migrations
                             Id = 1,
                             AlbumId = 1,
                             Duration = "3:12",
-                            Link = "https://www.youtube.com/watch?v=m6urbZyHgO4",
+                            Link = "song.com",
                             Title = "Confessions"
                         },
                         new
@@ -177,7 +167,7 @@ namespace album_collection.Migrations
                             Id = 2,
                             AlbumId = 1,
                             Duration = "3:12",
-                            Link = "https://www.youtube.com/watch?v=m6urbZyHgO4",
+                            Link = "song.com",
                             Title = "Confessions Part 2"
                         },
                         new
@@ -185,7 +175,7 @@ namespace album_collection.Migrations
                             Id = 3,
                             AlbumId = 1,
                             Duration = "3:12",
-                            Link = "https://www.youtube.com/watch?v=m6urbZyHgO4",
+                            Link = "song.com",
                             Title = "Confessions Part 3"
                         },
                         new
@@ -193,7 +183,7 @@ namespace album_collection.Migrations
                             Id = 4,
                             AlbumId = 2,
                             Duration = "3:12",
-                            Link = "https://www.youtube.com/watch?v=m6urbZyHgO4",
+                            Link = "song.com",
                             Title = "Song A-1"
                         },
                         new
@@ -201,7 +191,7 @@ namespace album_collection.Migrations
                             Id = 5,
                             AlbumId = 2,
                             Duration = "3:12",
-                            Link = "https://www.youtube.com/watch?v=m6urbZyHgO4",
+                            Link = "song.com",
                             Title = "Song A-2"
                         },
                         new
@@ -209,7 +199,7 @@ namespace album_collection.Migrations
                             Id = 6,
                             AlbumId = 2,
                             Duration = "3:12",
-                            Link = "https://www.youtube.com/watch?v=m6urbZyHgO4",
+                            Link = "song.com",
                             Title = "Song A-3"
                         },
                         new
@@ -217,7 +207,7 @@ namespace album_collection.Migrations
                             Id = 7,
                             AlbumId = 3,
                             Duration = "3:12",
-                            Link = "https://www.youtube.com/watch?v=m6urbZyHgO4",
+                            Link = "song.com",
                             Title = "Song B-1"
                         },
                         new
@@ -225,7 +215,7 @@ namespace album_collection.Migrations
                             Id = 8,
                             AlbumId = 3,
                             Duration = "3:12",
-                            Link = "https://www.youtube.com/watch?v=m6urbZyHgO4",
+                            Link = "song.com",
                             Title = "Song B-2"
                         },
                         new
@@ -233,7 +223,7 @@ namespace album_collection.Migrations
                             Id = 9,
                             AlbumId = 3,
                             Duration = "3:12",
-                            Link = "https://www.youtube.com/watch?v=m6urbZyHgO4",
+                            Link = "song.com",
                             Title = "Song B-3"
                         });
                 });
