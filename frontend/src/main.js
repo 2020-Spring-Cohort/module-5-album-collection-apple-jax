@@ -61,7 +61,37 @@ function navSongs(){
         }
         )
     });
+
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('add-song__submit')){
+            const songTitle = event.target.parentElement.querySelector('.add-song__songTitle').value;
+            const songDuration = event.target.parentElement.querySelector('.add-song__songDuration').value;
+            const songLink = event.target.parentElement.querySelector('.add-song__songLink').value;
+
+            console.log(songTitle, songDuration, songLink);
+
+            var requestBody = {
+                Title: songTitle,
+                Duration: songDuration,
+                Link: songLink
+            }
+
+            apiActions.postRequest(
+                "https://localhost:44313/api/songs",
+                requestBody,
+                songs => {
+                    console.log("Songs pulled from backend");
+                    console.log(songs);
+                    app.innerHTML = Songs(songs);
+                }
+            )
+        }
+    })
 }
+
+
+
+
 
 function navAlbums(){
     const albumsButton = document.querySelector('.nav__albums');
