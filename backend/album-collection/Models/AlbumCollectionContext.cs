@@ -63,7 +63,7 @@ namespace album_collection.Models
                     Id = 1,
                     Title = "Confessions",
                     Duration = "3:12",
-                    Link = "song.com",
+                    Link = "https://www.youtube.com/watch?v=m6urbZyHgO4",
                     AlbumId = 1,
                 },
                 new Song
@@ -71,7 +71,7 @@ namespace album_collection.Models
                     Id = 2,
                     Title = "Confessions Part 2",
                     Duration = "3:12",
-                    Link = "song.com",
+                    Link = "https://www.youtube.com/watch?v=m6urbZyHgO4",
                     AlbumId = 1,
                 },
                 new Song
@@ -79,7 +79,7 @@ namespace album_collection.Models
                     Id = 3,
                     Title = "Confessions Part 3",
                     Duration = "3:12",
-                    Link = "song.com",
+                    Link = "https://www.youtube.com/watch?v=m6urbZyHgO4",
                     AlbumId = 1,
                 },
                 new Song
@@ -87,7 +87,7 @@ namespace album_collection.Models
                     Id = 4,
                     Title = "Song A-1",
                     Duration = "3:12",
-                    Link = "song.com",
+                    Link = "https://www.youtube.com/watch?v=m6urbZyHgO4",
                     AlbumId = 2,
                 },
                 new Song
@@ -95,7 +95,7 @@ namespace album_collection.Models
                     Id = 5,
                     Title = "Song A-2",
                     Duration = "3:12",
-                    Link = "song.com",
+                    Link = "https://www.youtube.com/watch?v=m6urbZyHgO4",
                     AlbumId = 2,
                 },
                 new Song
@@ -103,7 +103,7 @@ namespace album_collection.Models
                     Id = 6,
                     Title = "Song A-3",
                     Duration = "3:12",
-                    Link = "song.com",
+                    Link = "https://www.youtube.com/watch?v=m6urbZyHgO4",
                     AlbumId = 2,
                 },
                 new Song
@@ -111,7 +111,7 @@ namespace album_collection.Models
                     Id = 7,
                     Title = "Song B-1",
                     Duration = "3:12",
-                    Link = "song.com",
+                    Link = "https://www.youtube.com/watch?v=m6urbZyHgO4",
                     AlbumId = 3,
                 },
                 new Song
@@ -119,7 +119,7 @@ namespace album_collection.Models
                     Id = 8,
                     Title = "Song B-2",
                     Duration = "3:12",
-                    Link = "song.com",
+                    Link = "https://www.youtube.com/watch?v=m6urbZyHgO4",
                     AlbumId = 3,
                 },
                  new Song
@@ -127,7 +127,7 @@ namespace album_collection.Models
                      Id = 9,
                      Title = "Song B-3",
                      Duration = "3:12",
-                     Link = "song.com",
+                     Link = "https://www.youtube.com/watch?v=m6urbZyHgO4",
                      AlbumId = 3,
                  }
 
@@ -138,7 +138,7 @@ namespace album_collection.Models
                     Id = 1,
                     Title = "Lock and Key",
                     RecordLabel = "columbia records",
-                    Image = "img",
+                    Image = "album1.jpg",
                     ArtistId = 1,
                 },
                 new Album
@@ -146,7 +146,7 @@ namespace album_collection.Models
                     Id = 2,
                     Title = "Artist A Album",
                     RecordLabel = "columbia records",
-                    Image = "img",
+                    Image = "album2.jpg",
                     ArtistId = 2,
                 },
                 new Album
@@ -154,7 +154,7 @@ namespace album_collection.Models
                     Id = 3,
                     Title = "Artist B Album",
                     RecordLabel = "columbia records",
-                    Image = "img",
+                    Image = "album3.jpg",
                     ArtistId = 3,
                 });
             base.OnModelCreating(modelBuilder);
