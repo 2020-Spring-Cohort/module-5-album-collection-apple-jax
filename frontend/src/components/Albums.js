@@ -6,7 +6,7 @@ export default function Albums(albums){
         
              <h3><p>Title : ${album.title}</p></h3>
              <h3><p>Record Label : ${album.recordLabel}</p></h3>
-             <img src=${album.image}></a>
+             <img src="./img/${album.image}" class="album__img">
        
         `
     }).join("")}
