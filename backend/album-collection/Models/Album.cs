@@ -12,6 +12,8 @@ namespace album_collection.Models
         public string Title { get; set; }
         public string Image { get; set; }
         public string RecordLabel { get; set; }
+        public string Comments { get; set; }
+        public int Rating { get; set; }
 
         [JsonIgnore]
         public virtual Artist Artist { get; set; }
@@ -23,13 +25,15 @@ namespace album_collection.Models
 
         }
 
-        public Album(int id, string title, string image, string recordLabel, int artistId)
+        public Album(int id, string title, string image, string recordLabel, int artistId, string comments, int rating)
         {
             Id = id;
             Title = title;
             Image = image;
             RecordLabel = recordLabel;
             ArtistId = artistId;
+            Comments = comments;
+            Rating = rating;
         }
 
     }

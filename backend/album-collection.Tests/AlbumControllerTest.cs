@@ -27,9 +27,9 @@ namespace album_collection.Tests
             //Arrange
             var myCollection = new List<Album>()
             {
-                new Album(1, "First Album", "columbia records", "img", 1),
-                new Album(2, "Second Album", "columbia records", "img", 1),
-                new Album(3, "Third Album", "columbia records", "img", 1)
+                new Album(1, "First Album", "columbia records", "img", 1, "Here is a comment", 5),
+                new Album(2, "Second Album", "columbia records", "img", 1, "Here is a comment", 5),
+                new Album(3, "Third Album", "columbia records", "img", 1,"Here is a comment", 5)
 
             };
             albumRepo.GetAll().Returns(myCollection);
@@ -49,9 +49,9 @@ namespace album_collection.Tests
             // arrange
             var expectedAlbums = new List<Album>()
             {
-                new Album(1, "First Album", "columbia records", "img", 1),
-                new Album(2, "Second Album", "columbia records", "img", 1),
-                new Album(3, "Third Album", "columbia records", "img", 1)
+                new Album(1, "First Album", "columbia records", "img", 1, "Here is a comment", 5),
+                new Album(2, "Second Album", "columbia records", "img", 1, "Here is a comment", 5),
+                new Album(3, "Third Album", "columbia records", "img", 1,"Here is a comment", 5)
 
             };
 
@@ -69,8 +69,8 @@ namespace album_collection.Tests
         {
             // arrange
             var id = 2;
-            var firstAlbum = new Album(1, "First Album", "columbia records", "img", 1);
-            var secondAlbum = new Album(2, "Second Album", "columbia records", "img", 1);
+            var firstAlbum = new Album(1, "First Album", "columbia records", "img", 1, "Here is a comment", 5);
+            var secondAlbum = new Album(2, "Second Album", "columbia records", "img", 1, "Here is a comment", 5);
             var expectedAlbums = new List<Album>();
             expectedAlbums.Add(firstAlbum);
             expectedAlbums.Add(secondAlbum);
@@ -89,7 +89,7 @@ namespace album_collection.Tests
         public void Post_Creates_New_Album()
         {
             // arrange
-            var newAlbum = new Album(1, "First Album", "columbia records", "img", 1);
+            var newAlbum = new Album(1, "First Album", "columbia records", "img", 1, "Here is a comment", 5);
             var albumList = new List<Album>();
 
             // Use When..Do to substitute for methods that don't return a value, like the Repository method Create()
@@ -113,11 +113,11 @@ namespace album_collection.Tests
         {
             // arrange
             var albumId = 1;
-            var deletedAlbum = new Album(albumId, "First Album", "columbia records", "img", 1);
+            var deletedAlbum = new Album(albumId, "First Album", "columbia records", "img", 1, "Here is a comment", 5);
             var albumList = new List<Album>()
             {
                 deletedAlbum,
-                new Album(2,"Second Album", "columbia records", "img", 1)
+                new Album(2,"Second Album", "columbia records", "img", 1, "Here is a comment", 5)
             };
 
             // our controller's Delete() action is dependent on the Repository's
@@ -141,12 +141,12 @@ namespace album_collection.Tests
         public void Put_Updates_Album()
         {
             // arrange
-            var originalAlbum = new Album(1, "First Album", "columbia records", "img", 1);
+            var originalAlbum = new Album(1, "First Album", "columbia records", "img", 1, "Here is a comment", 5);
             var expectedAlbum = new List<Album>()
             {
                 originalAlbum
             };
-            var updatedAlbum = new Album(1, "First Album Update", "columbia records", "img", 1);
+            var updatedAlbum = new Album(1, "First Album Update", "columbia records", "img", 1, "Here is a comment", 5);
 
             // What are the dependencies for the controller's Update action?
             // They are Update() and GetAll()

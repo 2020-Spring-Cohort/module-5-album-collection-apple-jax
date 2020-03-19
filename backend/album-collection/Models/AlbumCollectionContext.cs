@@ -140,6 +140,9 @@ namespace album_collection.Models
                     RecordLabel = "columbia records",
                     Image = "album1.jpg",
                     ArtistId = 1,
+                    Comments = "Here is a great comment",
+                    Rating = 5,
+
                 },
                 new Album
                 {
@@ -148,6 +151,8 @@ namespace album_collection.Models
                     RecordLabel = "columbia records",
                     Image = "album2.jpg",
                     ArtistId = 2,
+                    Comments = "Here is a great comment",
+                    Rating = 5,
                 },
                 new Album
                 {
@@ -156,6 +161,8 @@ namespace album_collection.Models
                     RecordLabel = "columbia records",
                     Image = "album3.jpg",
                     ArtistId = 3,
+                    Comments = "Here is a great comment",
+                    Rating = 5,
                 });
             base.OnModelCreating(modelBuilder);
         }
