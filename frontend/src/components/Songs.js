@@ -11,8 +11,11 @@ export default function Songs(songs){
     }).join("")}
     
     <section class="add-song">
-        <input class="add-song__songTitle" type="text" placeholder="Add a song">
-        <button class="add-song__submit">Add a song</button>
+        <input class="add-song__songTitle" type="text" placeholder="Add a Song">
+        <input class="add-song__songDuration" type="text" placeholder="Add Duration">
+        <input class="add-song__songLink" type="text" placeholder="Add a Link">
+        <button class="add-song__submit">Add a Song</button>
     </section>
     `;
+    
 }
