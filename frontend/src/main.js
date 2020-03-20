@@ -47,6 +47,38 @@ function navArtists(){
         }
         )
     });
+
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('add-artist__submit')){
+            const artistName = event.target.parentElement.querySelector('.add-artist__artistName').value;
+            const artistAge = event.target.parentElement.querySelector('.add-artist__artistAge').value;
+            const artistRecordLabel = event.target.parentElement.querySelector('.add-artist__artistrecordLabel').value;
+            const artistHomeTown = event.target.parentElement.querySelector('.add-artist__artisthomeTown').value;
+            
+            
+            console.log(artistName, artistAge, artistRecordLabel, artistHomeTown);
+
+            var requestBody = {
+                Name: artistName,
+                Age: artistAge,
+                Image: "artist1.jpg",
+                RecordLabel: artistRecordLabel,
+                HomeTown: artistHomeTown
+            }
+
+            apiActions.postRequest(
+                "https://localhost:44313/api/artists",
+                requestBody,
+                artists => {
+                    console.log("Artists pulled from backend");
+                    console.log(artists);
+                    app.innerHTML = Artists(artists);
+                }
+            )
+        }
+    })
+
+
 }
 
 function navSongs(){
@@ -61,6 +93,35 @@ function navSongs(){
         }
         )
     });
+
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('add-song__submit')){
+            const songTitle = event.target.parentElement.querySelector('.add-song__songTitle').value;
+            const songDuration = event.target.parentElement.querySelector('.add-song__songDuration').value;
+            const songLink = event.target.parentElement.querySelector('.add-song__songLink').value;
+            const songAlbumId = event.target.parentElement.querySelector('.add-song__songAlbumId').value;
+
+
+            console.log(songTitle, songDuration, songLink);
+
+            var requestBody = {
+                Title: songTitle,
+                Duration: songDuration,
+                Link: songLink,
+                AlbumId: songAlbumId
+            }
+
+            apiActions.postRequest(
+                "https://localhost:44313/api/songs",
+                requestBody,
+                songs => {
+                    console.log("Songs pulled from backend");
+                    console.log(songs);
+                    app.innerHTML = Songs(songs);
+                }
+            )
+        }
+    })
 }
 
 function navAlbums(){
@@ -75,6 +136,38 @@ function navAlbums(){
         }
         )
     });
+
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('add-album__submit')){
+            const albumTitle = event.target.parentElement.querySelector('.add-album__albumTitle').value;
+            const albumRecordLabel = event.target.parentElement.querySelector('.add-album__recordLabel').value;
+            const albumComment = event.target.parentElement.querySelector('.add-album__comments').value;
+            const albumRating = event.target.parentElement.querySelector('.add-album__rating').value;
+            const albumArtistId = event.target.parentElement.querySelector('.add-album__albumArtistId').value;
+          
+
+            console.log(albumTitle, albumRecordLabel, albumComment, albumRating, albumArtistId);
+
+            var requestBody = {
+                Title: albumTitle,
+                Image: "album1.jpg",
+                RecordLabel: albumRecordLabel,
+                Comments: albumComment,
+                Rating: albumRating,
+                ArtistId: albumArtistId
+            }
+
+            apiActions.postRequest(
+                "https://localhost:44313/api/albums",
+                requestBody,
+                albums => {
+                    console.log("Albums pulled from backend");
+                    console.log(albums);
+                    app.innerHTML = Albums(albums);
+                }
+            )
+        }
+    })
 }
 
 
