@@ -47,6 +47,38 @@ function navArtists(){
         }
         )
     });
+
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('add-artist__submit')){
+            const artistName = event.target.parentElement.querySelector('.add-artist__artistName').value;
+            const artistAge = event.target.parentElement.querySelector('.add-artist__artistAge').value;
+            const artistRecordLabel = event.target.parentElement.querySelector('.add-artist__artistrecordLabel').value;
+            const artistHomeTown = event.target.parentElement.querySelector('.add-artist__artisthomeTown').value;
+            
+            
+            console.log(artistName, artistAge, artistRecordLabel, artistHomeTown);
+
+            var requestBody = {
+                Name: artistName,
+                Age: artistAge,
+                Image: "artist1.jpg",
+                RecordLabel: artistRecordLabel,
+                HomeTown: artistHomeTown
+            }
+
+            apiActions.postRequest(
+                "https://localhost:44313/api/artists",
+                requestBody,
+                artists => {
+                    console.log("Artists pulled from backend");
+                    console.log(artists);
+                    app.innerHTML = Artists(artists);
+                }
+            )
+        }
+    })
+
+
 }
 
 function navSongs(){
