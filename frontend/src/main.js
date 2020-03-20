@@ -92,10 +92,6 @@ function navSongs(){
     })
 }
 
-
-
-
-
 function navAlbums(){
     const albumsButton = document.querySelector('.nav__albums');
     const app = document.querySelector('#app');
@@ -108,6 +104,38 @@ function navAlbums(){
         }
         )
     });
+
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('add-album__submit')){
+            const albumTitle = event.target.parentElement.querySelector('.add-album__albumTitle').value;
+            const albumRecordLabel = event.target.parentElement.querySelector('.add-album__recordLabel').value;
+            const albumComment = event.target.parentElement.querySelector('.add-album__comments').value;
+            const albumRating = event.target.parentElement.querySelector('.add-album__rating').value;
+            const albumArtistId = event.target.parentElement.querySelector('.add-album__albumArtistId').value;
+          
+
+            console.log(albumTitle, albumRecordLabel, albumComment, albumRating, albumArtistId);
+
+            var requestBody = {
+                Title: albumTitle,
+                Image: "album1.jpg",
+                RecordLabel: albumRecordLabel,
+                Comments: albumComment,
+                Rating: albumRating,
+                ArtistId: albumArtistId
+            }
+
+            apiActions.postRequest(
+                "https://localhost:44313/api/albums",
+                requestBody,
+                albums => {
+                    console.log("Albums pulled from backend");
+                    console.log(albums);
+                    app.innerHTML = Albums(albums);
+                }
+            )
+        }
+    })
 }
 
 
