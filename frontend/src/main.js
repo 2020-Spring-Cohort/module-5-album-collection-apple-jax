@@ -67,13 +67,16 @@ function navSongs(){
             const songTitle = event.target.parentElement.querySelector('.add-song__songTitle').value;
             const songDuration = event.target.parentElement.querySelector('.add-song__songDuration').value;
             const songLink = event.target.parentElement.querySelector('.add-song__songLink').value;
+            const songAlbumId = event.target.parentElement.querySelector('.add-song__songAlbumId').value;
+
 
             console.log(songTitle, songDuration, songLink);
 
             var requestBody = {
                 Title: songTitle,
                 Duration: songDuration,
-                Link: songLink
+                Link: songLink,
+                AlbumId: songAlbumId
             }
 
             apiActions.postRequest(
