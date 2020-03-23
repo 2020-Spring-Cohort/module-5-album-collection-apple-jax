@@ -137,7 +137,7 @@ function navSongs(){
 
     app.addEventListener("click", function(){
         if(event.target.classList.contains('delete-song__submit')){
-            const songId = event.target.parentElement.querySelector('.song__id').value;
+            const songId = event.target.parentElement.querySelectorAll('.song__id').value;
             console.log(songId);
 
             apiActions.deleteRequest(
