@@ -1,9 +1,9 @@
 export default function Albums(albums){
     return `
-    <h2><p><b>Albums</b></p></h2>
+    <h2><p><b>Albums</b></p></h2><ul>
     ${albums.map(album => {
         return `
-        
+        <li>
              <h3><p>Title : ${album.title}</p></h3>
              <h3><p>Record Label : ${album.recordLabel}</p></h3>
              <img src="./img/${album.image}" class="album__img">
@@ -11,10 +11,10 @@ export default function Albums(albums){
              <button class="delete-album__submit">Delete</button>
              <input class="album__id" type="hidden" value="${album.id}">
                      <br><br>
-       
+       </li>
         `
     }).join("")}
-    
+    </ul>
 
     <section class="add-album">
         <input class="add-album__albumTitle" type="text" placeholder="Add an album">
