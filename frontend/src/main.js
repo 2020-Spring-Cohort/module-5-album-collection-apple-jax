@@ -78,7 +78,19 @@ function navArtists(){
         }
     })
 
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('delete-artist__submit')){
+            const artistId = event.target.parentElement.querySelector('.artist__id').value;
+            console.log(artistId);
 
+            apiActions.deleteRequest(
+                `https://localhost:44313/api/artists/${artistId}`,
+                artists => {
+                    app.innerHTML = Artists(artists);
+                }
+            )
+        }
+    })
 }
 
 function navSongs(){
@@ -117,6 +129,20 @@ function navSongs(){
                 songs => {
                     console.log("Songs pulled from backend");
                     console.log(songs);
+                    app.innerHTML = Songs(songs);
+                }
+            )
+        }
+    })
+
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('delete-song__submit')){
+            const songId = event.target.parentElement.querySelector('.song__id').value;
+            console.log(songId);
+
+            apiActions.deleteRequest(
+                `https://localhost:44313/api/songs/${songId}`,
+                songs => {
                     app.innerHTML = Songs(songs);
                 }
             )
@@ -168,33 +194,18 @@ function navAlbums(){
             )
         }
     })
+
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('delete-album__submit')){
+            const albumId = event.target.parentElement.querySelector('.album__id').value;
+            console.log(albumId);
+
+            apiActions.deleteRequest(
+                `https://localhost:44313/api/albums/${albumId}`,
+                albums => {
+                    app.innerHTML = Albums(albums);
+                }
+            )
+        }
+    })
 }
-
-
-// function navArtists(){
-//     const todosButton = document.querySelector(".nav__artists");
-//     artistsButton.addEventListener("click", function() {
-//         apiActions.getRequest("https://localhost:44313/api/artists",
-//             artists => {
-//                 console.log(artists);
-//                 document.querySelector('#app').innerHTML = Artists(artists);
-//             }
-//         )
-       
-//       });
-// }
-//   app.addEventListener("click", function(){
-    //     if(event.target.classList.contains('add-artist__submit')){
-    //         const artist = event.target.parentElement.querySelector('.add-artist__artistName').value;
-    //         console.log(artist);
-
-    //         apiActions.postRequest(
-    //             "https://localhost:44393/api/artists",
-    //             artist,
-    //             newArtist => {
-    //                 console.log("Artists returned from back end");
-    //                 console.log(newArtist);
-    //             }
-    //         )
-    //     }
-    // })
