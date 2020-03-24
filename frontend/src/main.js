@@ -5,7 +5,9 @@ import Home from './components/Home';
 import Artists from './components/Artists';
 import Songs from './components/Songs';
 import Albums from './components/Albums';
-import AlbumEdit from './components/AlbumEdits';
+import AlbumEdits from './components/AlbumEdits';
+import SongEdits from './components/SongEdits';
+import ArtistEdits from './components/ArtistEdits';
 import apiActions from './api/apiActions';
 
 export default pageBuild;
@@ -18,6 +20,8 @@ function pageBuild(){
     navSongs();
     navAlbums();
     AlbumEdits();
+    SongEdits();
+    ArtistEdits();
 }
 
 function header() {
@@ -93,6 +97,60 @@ function navArtists(){
             )
         }
     })
+
+        // When the user clicks the edit button, we will call the get fetch request
+    // to get the entire Todo object
+    // and then display the Todo object in the TodoEdit form
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('edit-artist__submit')){
+            const artistId = event.target.parentElement.querySelector('.artist__id').value;
+            console.log(artistId);
+
+            apiActions.getRequest(
+                `https://localhost:44313/api/artists/${artistId}`,
+                ArtistEdit => {
+                    console.log(ArtistEdit);
+                    app.innerHTML = ArtistEdits(ArtistEdit);
+                  }
+            )
+
+        }
+    })
+
+
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('update-artist__submit')){
+            const artistId = event.target.parentElement.querySelector('.update-artist__Id').value;
+            const artistName = event.target.parentElement.querySelector('.update-artist__name').value;
+            const artistImage = event.target.parentElement.querySelector('.update-artist__image').value;
+            const artistAge = event.target.parentElement.querySelector('.update-artist__age').value;
+            const artistHomeTown = event.target.parentElement.querySelector('.update-artist__hometown').value;
+            const artistRecordLabel = event.target.parentElement.querySelector('.update-artist__recordlabel').value;
+            
+            
+            const artistData = {
+                Id: artistId,
+                Name: artistName,
+                Image: artistImage,
+                Age: artistAge,
+                HomeTown: artistHomeTown,
+                RecordLabel: artistRecordLabel
+              };
+
+            console.log(artistData);
+
+            apiActions.putRequest(
+                `https://localhost:44313/api/artists/${artistId}`,
+                artistData,
+                artists => {
+                    app.innerHTML = Artists(artists);
+                }
+            )
+        }
+    })
+
+
+
 }
 
 function navSongs(){
@@ -183,6 +241,60 @@ function navSongs(){
             )
         }
     })
+
+      // When the user clicks the edit button, we will call the get fetch request
+    // to get the entire Todo object
+    // and then display the Todo object in the TodoEdit form
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('edit-song__submit')){
+            const songId = event.target.parentElement.querySelector('.song__id').value;
+            console.log(songId);
+
+            apiActions.getRequest(
+                `https://localhost:44313/api/songs/${songId}`,
+                SongEdit => {
+                    console.log(SongEdit);
+                    app.innerHTML = SongEdits(SongEdit);
+                  }
+            )
+
+        }
+    })
+
+      
+    // When the user clicks the Save Changes button on the TodoEdit form
+    // we will capture the data from the TodoEdit form
+    // and call the put fetch request
+    // and then redisplay the Todos component with the updated list of todos
+    
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('update-song__submit')){
+            const songId = event.target.parentElement.querySelector('.update-song__songId').value;
+            const albumId = event.target.parentElement.querySelector('.update-song__songAlbumId').value;
+            const songTitle = event.target.parentElement.querySelector('.update-song__songTitle').value;
+            const songDuration = event.target.parentElement.querySelector('.update-song__songDuration').value;
+            const songLink = event.target.parentElement.querySelector('.update-song__songLink').value;
+           
+            const songData = {
+                Id: songId,
+                AlbumId: albumId,
+                Title: songTitle,
+                Duration: songDuration,
+                Link: songLink
+              };
+
+            console.log(songData);
+
+            apiActions.putRequest(
+                `https://localhost:44313/api/songs/${songId}`,
+                songData,
+                songs => {
+                    app.innerHTML = Songs(songs);
+                }
+            )
+        }
+    })
+
   //  
 
     
@@ -263,6 +375,40 @@ function navAlbums(){
                   }
             )
 
+        }
+    })
+
+    
+    // When the user clicks the Save Changes button on the TodoEdit form
+    // we will capture the data from the TodoEdit form
+    // and call the put fetch request
+    // and then redisplay the Todos component with the updated list of todos
+    
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('update-album__submit')){
+            const albumId = event.target.parentElement.querySelector('.update-album__id').value;
+            const artistId = event.target.parentElement.querySelector('.artist__id').value;
+            const albumTitle = event.target.parentElement.querySelector('.update-album__title').value;
+            const albumRecordLabel = event.target.parentElement.querySelector('.update-album__recordlabel').value;
+            const albumImage = event.target.parentElement.querySelector('.update-album__image').value;
+            
+            const albumData = {
+                Id: albumId,
+                Title: albumTitle,
+                RecordLabel: albumRecordLabel,
+                Image: albumImage,
+                ArtistId: artistId
+              };
+
+            console.log(albumData);
+
+            apiActions.putRequest(
+                `https://localhost:44313/api/albums/${albumId}`,
+                albumData,
+                albums => {
+                    app.innerHTML = Albums(albums);
+                }
+            )
         }
     })
 }
