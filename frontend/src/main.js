@@ -5,7 +5,7 @@ import Home from './components/Home';
 import Artists from './components/Artists';
 import Songs from './components/Songs';
 import Albums from './components/Albums';
-import AlbumEdit from './components/AlbumEdits';
+import AlbumEdits from './components/AlbumEdits';
 import apiActions from './api/apiActions';
 
 export default pageBuild;
@@ -263,6 +263,40 @@ function navAlbums(){
                   }
             )
 
+        }
+    })
+
+    
+    // When the user clicks the Save Changes button on the TodoEdit form
+    // we will capture the data from the TodoEdit form
+    // and call the put fetch request
+    // and then redisplay the Todos component with the updated list of todos
+    
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('update-album__submit')){
+            const albumId = event.target.parentElement.querySelector('.update-album__id').value;
+            const artistId = event.target.parentElement.querySelector('.artist__id').value;
+            const albumTitle = event.target.parentElement.querySelector('.update-album__title').value;
+            const albumRecordLabel = event.target.parentElement.querySelector('.update-album__recordlabel').value;
+            const albumImage = event.target.parentElement.querySelector('.update-album__image').value;
+            
+            const albumData = {
+                Id: albumId,
+                Title: albumTitle,
+                RecordLabel: albumRecordLabel,
+                Image: albumImage,
+                ArtistId: artistId
+              };
+
+            console.log(albumData);
+
+            apiActions.putRequest(
+                `https://localhost:44313/api/albums/${albumId}`,
+                albumData,
+                albums => {
+                    app.innerHTML = Albums(albums);
+                }
+            )
         }
     })
 }

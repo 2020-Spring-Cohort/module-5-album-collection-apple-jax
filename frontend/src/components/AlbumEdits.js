@@ -1,20 +1,18 @@
-export default function AlbumEdit(album){
+export default function AlbumEdits(album){
     return `
+
     <section class="content__album">
         <h4>${album.title}</h4>
     </section>
-    
-    <ul class="update-album">
-    <li>
-    <h3><p>Title : ${album.title}</p></h3>
-    <h3><p>Record Label : ${album.recordLabel}</p></h3>
-    <img src="./img/${album.image}" class="album__img">
 
-    <button class="Update-album__submit">Update</button>
-    <input class="album__id" type="hidden" value="${album.id}">
+    <section class="update-album">
+    <input class="update-album__title" type="text" value="${album.title}">
+    <input class="update-album__recordlabel" type="text" value="${album.recordLabel}">
+    <input class="update-album__image" type="text" value="${album.image}">
+    <input class="update-album__id" type="hidden" value="${album.id}">
     <input class="artist__id" type="hidden" value="${album.artist.id}">
-    <br><br>
-</li>
-    </ul>
+    <button class="update-album__submit">Save Changes</button>
+    </section>
+
 `;
 }
