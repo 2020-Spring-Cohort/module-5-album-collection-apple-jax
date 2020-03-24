@@ -7,6 +7,7 @@ import Songs from './components/Songs';
 import Albums from './components/Albums';
 import AlbumEdits from './components/AlbumEdits';
 import SongEdits from './components/SongEdits';
+import ArtistEdits from './components/ArtistEdits';
 import apiActions from './api/apiActions';
 
 export default pageBuild;
@@ -20,6 +21,7 @@ function pageBuild(){
     navAlbums();
     AlbumEdits();
     SongEdits();
+    ArtistEdits();
 }
 
 function header() {
@@ -95,6 +97,60 @@ function navArtists(){
             )
         }
     })
+
+        // When the user clicks the edit button, we will call the get fetch request
+    // to get the entire Todo object
+    // and then display the Todo object in the TodoEdit form
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('edit-artist__submit')){
+            const artistId = event.target.parentElement.querySelector('.artist__id').value;
+            console.log(artistId);
+
+            apiActions.getRequest(
+                `https://localhost:44313/api/artists/${artistId}`,
+                ArtistEdit => {
+                    console.log(ArtistEdit);
+                    app.innerHTML = ArtistEdits(ArtistEdit);
+                  }
+            )
+
+        }
+    })
+
+
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('update-artist__submit')){
+            const artistId = event.target.parentElement.querySelector('.update-artist__Id').value;
+            const artistName = event.target.parentElement.querySelector('.update-artist__name').value;
+            const artistImage = event.target.parentElement.querySelector('.update-artist__image').value;
+            const artistAge = event.target.parentElement.querySelector('.update-artist__age').value;
+            const artistHomeTown = event.target.parentElement.querySelector('.update-artist__hometown').value;
+            const artistRecordLabel = event.target.parentElement.querySelector('.update-artist__recordlabel').value;
+            
+            
+            const artistData = {
+                Id: artistId,
+                Name: artistName,
+                Image: artistImage,
+                Age: artistAge,
+                HomeTown: artistHomeTown,
+                RecordLabel: artistRecordLabel
+              };
+
+            console.log(artistData);
+
+            apiActions.putRequest(
+                `https://localhost:44313/api/artists/${artistId}`,
+                artistData,
+                artists => {
+                    app.innerHTML = Artists(artists);
+                }
+            )
+        }
+    })
+
+
+
 }
 
 function navSongs(){

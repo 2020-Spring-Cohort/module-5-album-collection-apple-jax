@@ -9,6 +9,7 @@ export default function Artists(artists){
              <h3><p>Age : ${artist.age} </p></h3>
              <h3><p>Home Town : ${artist.homeTown} </p></h3>
              <h3><p>Record Label : ${artist.recordLabel} </p></h3>
+             <button class="edit-artist__submit">Edit</button>
              <button class="delete-artist__submit">Delete</button>
              <input class="artist__id" type="hidden" value="${artist.id}">
              </li>
