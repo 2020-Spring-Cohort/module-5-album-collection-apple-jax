@@ -1,18 +1,20 @@
 export default function Artists(artists){
     return `
-    <h2><p><b>Artists</b></p></h2>
+    <h2><p><b>Artists</b></p></h2><ul>
     ${artists.map(artist => {
         return `
-        
+        <li>
              <h3><p>${artist.name} </p></h3>
              <img src="./img/${artist.image}" class="album__img">
              <h3><p>Age : ${artist.age} </p></h3>
              <h3><p>Home Town : ${artist.homeTown} </p></h3>
              <h3><p>Record Label : ${artist.recordLabel} </p></h3>
-       
+             <button class="delete-artist__submit">Delete</button>
+             <input class="artist__id" type="hidden" value="${artist.id}">
+             </li>
         `
     }).join("")}
-    
+    </ul>
 
     <section class="add-artist">
         <input class="add-artist__artistName" type="text" placeholder="Add an Artist">
@@ -25,5 +27,3 @@ export default function Artists(artists){
     `;
 
 }
-
-// <img src="../../docs/img/buttons_imgtest.jpg">${artist.image} </a>
