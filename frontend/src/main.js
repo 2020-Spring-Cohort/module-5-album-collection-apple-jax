@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Artists from './components/Artists';
 import Songs from './components/Songs';
 import Albums from './components/Albums';
+import AlbumEdit from './components/AlbumEdis';
 import apiActions from './api/apiActions';
 
 export default pageBuild;
@@ -242,6 +243,25 @@ function navAlbums(){
                     app.innerHTML = Albums(albums);
                 }
             )
+        }
+    })
+
+      // When the user clicks the edit button, we will call the get fetch request
+    // to get the entire Todo object
+    // and then display the Todo object in the TodoEdit form
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('edit-album__submit')){
+            const albumEId = event.target.parentElement.querySelector('.album__id').value;
+            console.log(albumEId);
+
+            apiActions.getRequest(
+                `https://localhost:44313/api/albums/${albumEId}`,
+                AlbumEdit => {
+                    console.log(AlbumEdit);
+                    app.innerHTML = AlbumEdits(AlbumEdit);
+                  }
+            )
+
         }
     })
 }
