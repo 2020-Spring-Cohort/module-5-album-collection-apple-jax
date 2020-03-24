@@ -4,14 +4,14 @@ export default function Albums(albums){
     ${albums.map(album => {
         return `
         <li>
-             <h3><p>Title : ${album.title}</p></h3>
-             <h3><p>Record Label : ${album.recordLabel}</p></h3>
-             <img src="./img/${album.image}" class="album__img">
+            <h3><p>Title : ${album.title}</p></h3>
+            <h3><p>Record Label : ${album.recordLabel}</p></h3>
+            <img src="./img/${album.image}" class="album__img">
 
-             <button class="delete-album__submit">Delete</button>
-             <input class="album__id" type="hidden" value="${album.id}">
-                     <br><br>
-       </li>
+            <button class="delete-album__submit">Delete</button>
+            <input class="album__id" type="hidden" value="${album.id}">
+            <br><br>
+        </li>
         `
     }).join("")}
     </ul>

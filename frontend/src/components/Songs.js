@@ -4,18 +4,15 @@ export default function Songs(songs){
     ${songs.map(song => {
         return `
         <li>
-        <h3><a href= ${song.link} title="${song.title} Link" target="_blank">${song.title}</a>- ${song.duration} mins</h3>
-        <button class="delete-song__submit">Delete</button>
-        <input class="song__id" type="hidden" value="${song.id}">
-        <br><br>
-        </li>
+            <h3><a href= ${song.link} title="${song.title} Link" target="_blank">${song.title}</a>- ${song.duration} mins</h3>
+            <button class="delete-song__submit">Delete</button>
+            <input class="song__id" type="hidden" value="${song.id}">
+                    <br><br>
+    </li>
         `
+        
     }).join("")}
     </ul>
-
-
-   
-    
     <section class="add-song">
         <input class="add-song__songTitle" type="text" placeholder="Add a Song">
         <input class="add-song__songDuration" type="text" placeholder="Add Duration">
@@ -26,5 +23,3 @@ export default function Songs(songs){
     `;
     
 }
-
-

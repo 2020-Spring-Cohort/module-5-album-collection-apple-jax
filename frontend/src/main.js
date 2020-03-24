@@ -106,34 +106,67 @@ function navSongs(){
         )
     });
 
-    app.addEventListener("click", function(){
-        if(event.target.classList.contains('add-song__submit')){
-            const songTitle = event.target.parentElement.querySelector('.add-song__songTitle').value;
-            const songDuration = event.target.parentElement.querySelector('.add-song__songDuration').value;
-            const songLink = event.target.parentElement.querySelector('.add-song__songLink').value;
-            const songAlbumId = event.target.parentElement.querySelector('.add-song__songAlbumId').value;
-
-
-            console.log(songTitle, songDuration, songLink);
-
-            var requestBody = {
-                Title: songTitle,
-                Duration: songDuration,
-                Link: songLink,
-                AlbumId: songAlbumId
-            }
-
-            apiActions.postRequest(
-                "https://localhost:44313/api/songs",
-                requestBody,
+    function navSongs(){
+        const songsButton = document.querySelector('.nav__songs');
+        const app = document.querySelector('#app');
+        
+        songsButton.addEventListener("click", function() {
+            apiActions.getRequest('https://localhost:44313/api/songs',
                 songs => {
-                    console.log("Songs pulled from backend");
                     console.log(songs);
                     app.innerHTML = Songs(songs);
-                }
+            }
             )
-        }
-    })
+        });
+    
+        app.addEventListener("click", function(){
+            if(event.target.classList.contains('add-song__submit')){
+                const songTitle = event.target.parentElement.querySelector('.add-song__songTitle').value;
+                const songDuration = event.target.parentElement.querySelector('.add-song__songDuration').value;
+                const songLink = event.target.parentElement.querySelector('.add-song__songLink').value;
+                const songAlbumId = event.target.parentElement.querySelector('.add-song__songAlbumId').value;
+    
+    
+                console.log(songTitle, songDuration, songLink);
+    
+                var requestBody = {
+                    Title: songTitle,
+                    Duration: songDuration,
+                    Link: songLink,
+                    AlbumId: songAlbumId
+                }
+    
+                apiActions.postRequest(
+                    "https://localhost:44313/api/songs",
+                    requestBody,
+                    songs => {
+                        console.log("Songs pulled from backend");
+                        console.log(songs);
+                        app.innerHTML = Songs(songs);
+                    }
+                )
+            }
+        })
+    
+        app.addEventListener("click", function(){
+            if(event.target.classList.contains('delete-song__submit')){
+                const songId = event.target.parentElement.querySelector('.song__id').value;
+                console.log(songId);
+    
+                apiActions.deleteRequest(
+                    `https://localhost:44313/api/songs/${songId}`,
+                    songs => {
+                        app.innerHTML = Songs(songs);
+                    }
+                )
+            }
+        })
+    }
+
+
+
+
+
 
     app.addEventListener("click", function(){
         if(event.target.classList.contains('delete-song__submit')){
@@ -141,13 +174,14 @@ function navSongs(){
             console.log(songId);
 
             apiActions.deleteRequest(
-                `https://localhost:44313/api/albums/${songId}`,
+                `https://localhost:44313/api/songs/${songId}`,
                 songs => {
                     app.innerHTML = Songs(songs);
                 }
             )
         }
     })
+  //  
 
     
 }
@@ -211,3 +245,6 @@ function navAlbums(){
         }
     })
 }
+
+
+
