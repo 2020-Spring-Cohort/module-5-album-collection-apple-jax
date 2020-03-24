@@ -5,7 +5,7 @@ import Home from './components/Home';
 import Artists from './components/Artists';
 import Songs from './components/Songs';
 import Albums from './components/Albums';
-import AlbumEdit from './components/AlbumEdis';
+import AlbumEdit from './components/AlbumEdits';
 import apiActions from './api/apiActions';
 
 export default pageBuild;
@@ -17,6 +17,7 @@ function pageBuild(){
     navArtists();
     navSongs();
     navAlbums();
+    AlbumEdits();
 }
 
 function header() {
