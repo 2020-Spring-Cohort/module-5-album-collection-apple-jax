@@ -6,6 +6,7 @@ import Artists from './components/Artists';
 import Songs from './components/Songs';
 import Albums from './components/Albums';
 import AlbumEdits from './components/AlbumEdits';
+import SongEdits from './components/SongEdits';
 import apiActions from './api/apiActions';
 
 export default pageBuild;
@@ -18,6 +19,7 @@ function pageBuild(){
     navSongs();
     navAlbums();
     AlbumEdits();
+    SongEdits();
 }
 
 function header() {
@@ -183,6 +185,60 @@ function navSongs(){
             )
         }
     })
+
+      // When the user clicks the edit button, we will call the get fetch request
+    // to get the entire Todo object
+    // and then display the Todo object in the TodoEdit form
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('edit-song__submit')){
+            const songId = event.target.parentElement.querySelector('.song__id').value;
+            console.log(songId);
+
+            apiActions.getRequest(
+                `https://localhost:44313/api/songs/${songId}`,
+                SongEdit => {
+                    console.log(SongEdit);
+                    app.innerHTML = SongEdits(SongEdit);
+                  }
+            )
+
+        }
+    })
+
+      
+    // When the user clicks the Save Changes button on the TodoEdit form
+    // we will capture the data from the TodoEdit form
+    // and call the put fetch request
+    // and then redisplay the Todos component with the updated list of todos
+    
+    app.addEventListener("click", function(){
+        if(event.target.classList.contains('update-song__submit')){
+            const songId = event.target.parentElement.querySelector('.update-song__songId').value;
+            const albumId = event.target.parentElement.querySelector('.update-song__songAlbumId').value;
+            const songTitle = event.target.parentElement.querySelector('.update-song__songTitle').value;
+            const songDuration = event.target.parentElement.querySelector('.update-song__songDuration').value;
+            const songLink = event.target.parentElement.querySelector('.update-song__songLink').value;
+           
+            const songData = {
+                Id: songId,
+                AlbumId: albumId,
+                Title: songTitle,
+                Duration: songDuration,
+                Link: songLink
+              };
+
+            console.log(songData);
+
+            apiActions.putRequest(
+                `https://localhost:44313/api/songs/${songId}`,
+                songData,
+                songs => {
+                    app.innerHTML = Songs(songs);
+                }
+            )
+        }
+    })
+
   //  
 
     

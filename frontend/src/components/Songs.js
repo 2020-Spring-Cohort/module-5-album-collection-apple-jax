@@ -5,6 +5,7 @@ export default function Songs(songs){
         return `
         <li>
             <h3><a href= ${song.link} title="${song.title} Link" target="_blank">${song.title}</a>- ${song.duration} mins</h3>
+            <button class="edit-song__submit">Edit</button>
             <button class="delete-song__submit">Delete</button>
             <input class="song__id" type="hidden" value="${song.id}">
                     <br><br>
