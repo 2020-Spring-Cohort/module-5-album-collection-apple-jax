@@ -8,6 +8,7 @@ import Albums from './components/Albums';
 import AlbumEdits from './components/AlbumEdits';
 import SongEdits from './components/SongEdits';
 import ArtistEdits from './components/ArtistEdits';
+import ShowAll from './components/ShowAll';
 import apiActions from './api/apiActions';
 
 export default pageBuild;
@@ -22,6 +23,7 @@ function pageBuild(){
     AlbumEdits();
     SongEdits();
     ArtistEdits();
+  //  ShowAll();
 }
 
 function header() {
@@ -411,6 +413,51 @@ function navAlbums(){
             )
         }
     })
+
+// show all
+
+// function ShowAll(){
+//     const allButton = document.querySelector('.nav__showall');
+
+//     allButton.addEventListener("click", function() {
+//         apiActions.getRequest('https://localhost:44313/api/songs',
+//               songs => {
+//               console.log(songs);
+//               app.innerHTML += ShowAll(songs);
+//                }
+//                )
+//          });
+  
+
+
+
+// //
+    
+//      allButton.addEventListener("click", function() {
+//       apiActions.getRequest('https://localhost:44313/api/artists',
+//             artists => {
+//             console.log(artists);
+//             app.innerHTML += ShowAll(artists);
+//              }
+//              )
+//        });
+
+// //
+
+//     const app = document.querySelector('#app');
+ 
+//     allButton.addEventListener("click", function() {
+//         apiActions.getRequest('https://localhost:44313/api/albums',
+//             albums => {
+//                 console.log(albums);
+//                 app.innerHTML += ShowAll(albums);
+//         }
+//         )
+//     });
+// }
+
+
+
 }
 
 
