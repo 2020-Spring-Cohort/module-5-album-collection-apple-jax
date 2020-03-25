@@ -14,12 +14,13 @@ export default function Songs(songs){
         
     }).join("")}
     
+    <div style="text-align:center;">
     <section class="add-song">
-        <input class="add-song__songTitle" type="text" placeholder="Add a Song">
-        <input class="add-song__songDuration" type="text" placeholder="Add Duration">
-        <input class="add-song__songLink" type="text" placeholder="Add a Link">
-        <input class="add-song__songAlbumId" type="text" placeholder="Add an Album Id">
-        <button class="add-song__submit">Add a Song</button>
+        <input class="add-song__songTitle add-album-style" type="text" placeholder="Add a Song">
+        <input class="add-song__songDuration add-album-style" type="text" placeholder="Add Duration">
+        <input class="add-song__songLink add-album-style" type="text add-album-style" placeholder="Add a Link">
+        <input class="add-song__songAlbumId add-album-style" type="text" placeholder="Add an Album Id">
+        <button class="add-song__submit add-album-style">Add a Song</button>
     </section>
     `;
     
