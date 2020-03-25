@@ -374,7 +374,7 @@ table {
       
      }
 
-     .update-album , .content__album , .update-artist
+     .update-album , .content__album , .update-artist 
      {
         border-collapse: separate;
         border: darkorange;
@@ -415,7 +415,7 @@ table {
        color:#fff;
      }
 
-     .update-artist
+     .update-artist , .update-song
      {
         border-collapse: separate;
         border: darkorange;
@@ -453,5 +453,6 @@ table {
         height: 50px;
        color:#fff;
      }
+     
 
 
