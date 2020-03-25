@@ -14,7 +14,7 @@
 html,
 body {
     background-color: #fff;
-    color: #555;
+    color:black;
     font-family: 'Lato', 'Arial', sans-serif;
     font-weight: 300;
     font-size: 20px;
@@ -69,7 +69,7 @@ body {
     transform:translate(0);
          position: absolute;
 
-    top: 10%;
+    top: 15%;
     right: 0%;
     left: 0%;
    
@@ -106,6 +106,7 @@ transform:translate(0);
 
 .main-nav{
     z-index:inherit;
+   width: 1540px;
 }
 .row {
     max-width: 1140px;
@@ -231,7 +232,7 @@ input[type=submit]:active {
 /* HEADER */
 /* ----------------------------------------------- */
 
-header {
+main {
     z-index:-1;
     background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url(https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80);
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80);

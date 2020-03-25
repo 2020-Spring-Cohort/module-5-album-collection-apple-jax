@@ -7,6 +7,9 @@ export default function Header() {
          <li class='nav__songs'> <h3  class="btn btn-ghost ">Songs</h3></li>
             
         </ul>
+
+
+        
     </nav>` 
 }
 
