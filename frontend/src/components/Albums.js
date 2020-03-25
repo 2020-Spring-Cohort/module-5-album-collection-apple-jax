@@ -1,22 +1,24 @@
 export default function Albums(albums){
     return `
-    <h2><p><b>Albums</b></p></h2><ul>
+
+    <h2><p><b>Albums</b></p></h2>
     ${albums.map(album => {
         return `
-        <li>
-            <h3><p>Title : ${album.title}</p></h3>
-            <h3><p>Record Label : ${album.recordLabel}</p></h3>
-            <img src="./img/${album.image}" class="album__img">
-            <button class="edit-album__submit">Edit</button>
-            <button class="delete-album__submit">Delete</button>
-            <input class="album__id" type="hidden" value="${album.id}">
+        <table class="japple3"> <tr>  
+         <td>  <img src="./img/${album.image}" class="album__img"><td>
+           <td> <h3><p>Title : ${album.title}</p></h3><td>
+           <td> <h3><p>Record Label : ${album.recordLabel}</p></h3></td></tr></table>
+           <div style="text-align:right;">
+           <button class="edit-album__submit">Edit</button>
+           <button class="delete-album__submit">Delete</button></div>
+           <input class="album__id" type="hidden" value="${album.id}">
             <br><br>
-        </li>
+       
         `
     }).join("")}
-    </ul>
+    
 
-    <section class="add-album">
+    <section class="add-album  class="japple3"">
         <input class="add-album__albumTitle" type="text" placeholder="Add an album">
         <input class="add-album__image" type="text" readonly placeholder="album1.jpg">
         <input class="add-album__recordLabel" type="text" placeholder="Add a Record Label">
@@ -27,3 +29,4 @@ export default function Albums(albums){
     </section>
     `;
 }
+

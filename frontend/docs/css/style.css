@@ -64,6 +64,9 @@ body {
     
 }
 
+
+
+
 .japple2 {
     opacity: .2;
     transform:translate(0);
@@ -102,6 +105,9 @@ transform:translate(0);
    
     
 }
+
+
+
 
 
 .main-nav{
@@ -321,8 +327,6 @@ main {
     color: #555;
 }
 
-.sticky .logo { display: none; }
-.sticky .logo-black { display: block; }
 
 /* ----------------------------------------------- */
 /* Albums */
@@ -331,16 +335,23 @@ main {
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 95%;
+    vertical-align: text-bottom;
     }
     
     td, th {
     border: 1px solid #dddddd;
-    text-align: left;
+    text-align: center;
     padding: 8px;
     }
     
     tr:nth-child(even) {
     background-color: #dddddd;
     }
+
+    .japple3:hover {
+   
+        background-color: #000;
+       color: rgb(250, 246, 246);
+     }
 
