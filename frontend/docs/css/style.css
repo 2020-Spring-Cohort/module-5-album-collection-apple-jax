@@ -427,4 +427,31 @@ table {
        font-weight: 300;
      }
 
+     .edit-song__submit , .delete-song__submit
+     {
+        text-align: center;
+        background-color: #000;
+        width: 729.5px ;
+        height: 40px;
+       color:#fff;
+
+     }
+
+     .edit-song__submit:hover
+     {
+        text-align: center;
+        background-color: rgb(52, 134, 4);
+        width: 729.5px ;
+        height: 50px;
+       color:#fff;
+     }
+     .delete-song__submit:hover
+     {
+        text-align: center;
+        background-color: rgb(201, 10, 10);
+        width: 729.5px ;
+        height: 50px;
+       color:#fff;
+     }
+
 
