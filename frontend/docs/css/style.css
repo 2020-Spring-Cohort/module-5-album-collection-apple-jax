@@ -374,7 +374,7 @@ table {
       
      }
 
-     .update-album , .content__album
+     .update-album , .content__album 
      {
         border-collapse: separate;
         border: darkorange;
@@ -388,6 +388,31 @@ table {
      .add-album-style
      {
         font-size: medium;
+     }
+
+     .edit-artist__submit,.delete-artist__submit
+     {
+        text-align: center;
+        background-color: #000;
+        width: 729.5px ;
+        height: 40px;
+       color:#fff;
+     }
+     .edit-artist__submit:hover
+     {
+        text-align: center;
+        background-color: rgb(52, 134, 4);
+        width: 729.5px ;
+        height: 50px;
+       color:#fff;
+     }
+     .delete-artist__submit:hover
+     {
+        text-align: center;
+        background-color: rgb(201, 10, 10);
+        width: 729.5px ;
+        height: 50px;
+       color:#fff;
      }
 
 
