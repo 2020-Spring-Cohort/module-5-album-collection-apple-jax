@@ -360,7 +360,7 @@ table {
         height: 50px;
        color:#000;
      }
-     .add-album
+     .add-album , .add-artist
      {
         
         border-collapse: separate;
