@@ -1,8 +1,458 @@
-body {
-    background-color: rgb(117, 182, 117)   
+
+/* ----------------------------------------------- */
+/* BASIC SETUP */
+/* ----------------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border-top:50px;
+    border-top-color: aliceblue;
 }
 
-.album__img{
-    width: 15%;
-    height: 15%;
+html,
+body {
+    background-color: #fff;
+    color:black;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    border-top:50px;
+    border-top-color: aliceblue;
 }
+
+.clearfix {zoom: 1;}
+.clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+/* ----------------------------------------------- */
+/* REUSABLE COMPONENTS */
+/* ----------------------------------------------- */
+.japple{
+    opacity: .02;
+    transform:translate(0);
+         position: absolute;
+
+    top: 12%;
+    left: 0%;
+}
+
+
+@keyframes moveInBoton2{
+    0% {
+        opacity: 0;
+        transform:translateY(150px);
+    }
+    
+  80%{
+       opacity: 0.2;
+         transform:translateY(20);
+    }
+    
+    100% {
+        opacity: 0.2;
+    transform:translate(0);
+    }
+    
+}
+
+
+
+
+.japple2 {
+    opacity: .2;
+    transform:translate(0);
+         position: absolute;
+
+    top: 15%;
+    right: 0%;
+    left: 0%;
+   
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+
+
+  display: inline-block;
+  position: relative;
+  
+  overflow: hidden;
+ 
+  
+transform:translate(0);
+         position: absolute;
+      
+    
+    color:#3cf784; 
+     font-size: 45px;
+ 
+   color:#fff; 
+    
+    
+    
+    animation: moveInBoton2 .3s ease-out 3s;
+    animation-fill-mode: backwards;
+    
+    animation-duration: 2s;
+    animation-delay: 2s;
+    animation-iteration-count: 1;
+   
+    
+}
+
+
+
+
+
+.main-nav{
+    z-index:inherit;
+   width: 1540px;
+}
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
+    z-index:5;
+}
+
+section {
+    padding: 80px 0;
+}
+
+.box {
+    padding: 1%;
+}
+
+/* ----- HEADINGS ----- */
+h1,
+h2,
+h3 {
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 240%;
+    word-spacing: 4px;
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 180%;
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+h3 {
+    font-size: 110%;
+    margin-bottom: 15px;
+}
+
+h2:after {
+    display: block;
+    height: 2px;
+    background-color: #e67e22;
+    content: " ";
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+
+/* ----- LINKS ----- */
+
+a:link,
+a:visited {
+    color: #e67e22;
+    text-decoration: none;
+    padding-bottom: 1px;
+    border-bottom: 1px solid #e67e22;
+    -webkit-transition: border-bottom 0.2s, color 0.2s;
+    transition: border-bottom 0.2s, color 0.2s;
+}
+
+a:hover,
+a:active {
+    color: #555;
+    border-bottom: 1px solid transparent;
+}
+
+/* ----- BUTTONS ----- */
+.btn:link,
+.btn:visited,
+input[type=submit] {
+    display: inline-block;
+    padding: 10px 30px;
+    font-weight: 300;
+    text-decoration: none;
+    border-radius: 200px;
+    -webkit-transition: background-color 0.2s, border 0.2s, color 0.2s;
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+
+.btn-full:link,
+.btn-full:visited,
+input[type=submit] {
+    background-color: #e67e22;
+    border: 1px solid #e67e22;
+    color: #fff;
+    margin-right: 15px;
+}
+
+.btn-ghost:link,
+.btn-ghost:visited {
+    border: 1px solid #e67e22;
+    color: #e67e22;
+}
+
+.btn:hover,
+.btn:active,
+input[type=submit]:hover,
+input[type=submit]:active {
+    background-color: #cf6d17;
+}
+
+.btn-full:hover,
+.btn-full:active {
+    border: 1px solid #cf6d17;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+    border: 1px solid #cf6d17;
+    color: #fff;
+}
+
+
+/* ----------------------------------------------- */
+/* HEADER */
+/* ----------------------------------------------- */
+
+main {
+    z-index:-1;
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url(https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80);
+    background-size:cover;
+    background-position: center;
+    height: 98vh;
+    background-attachment: fixed;
+    
+    border-top-color: aliceblue;
+     
+     
+}
+
+
+.hero-text-box {
+    position: absolute;
+    width: 1140px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+
+/* Main navi */
+.main-nav {
+    float: right;
+    list-style: none;
+    margin-top: 55px;
+}
+
+.main-nav li {
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.main-nav li a:link,
+.main-nav li a:visited {
+    padding: 8px 0;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    border-bottom: 2px solid transparent;
+    -webkit-transition: border-bottom 0.2s;
+    transition: border-bottom 0.2s;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+    border-bottom: 2px solid #e67e22;
+}
+
+
+/* Mobile navi */
+.mobile-nav-icon {
+    float: right;
+    margin-top: 30px;
+    cursor: pointer;
+    display: none;
+}
+
+.mobile-nav-icon i {
+    font-size: 200%;
+    color: #fff;
+}
+
+/* ----------------------------------------------- */
+/* Albums */
+/* ----------------------------------------------- */
+
+table {
+    font-family: arial, sans-serif;   
+    width: 95%;
+    vertical-align: text-bottom;
+
+    }
+    
+    td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+    background-color: #dddddd;
+    }
+
+    .japple3:hover {   
+        background-color: #000;
+       color: rgb(250, 246, 246);
+     }
+
+     .edit-album__submit, .delete-album__submit
+     {
+        text-align: center;
+        background-color: #000;
+        width: 729.5px ;
+        height: 40px;
+       color:#fff;
+       font-size: large;
+     }
+
+     .delete-album__submit:hover
+     {
+        text-align: center;
+        background-color: #fff;
+        width: 729.5px ;
+        height: 50px;
+       color:#000;
+
+     }
+     .edit-album__submit:hover
+     {
+        text-align: center;
+        background-color: #fff;
+        width: 729.5px ;
+        height: 50px;
+       color:#000;
+     }
+     .add-album , .add-artist , .add-song
+     {
+        
+        border-collapse: separate;
+        border: darkorange;
+        text-align: center;
+        background-color: #000;
+        width: 1460.5px ;
+        height: 100px;
+       color:#fff;
+       font-weight: 300;
+      
+     }
+
+     .update-album , .content__album , .update-artist 
+     {
+        border-collapse: separate;
+        border: darkorange;
+        text-align: center;
+        background-color: #000;
+        width: 1560.5px ;
+        height: 500px;
+       color:#fff;
+       font-weight: 300;
+     }
+     .add-album-style
+     {
+        font-size: medium;
+     }
+
+     .edit-artist__submit,.delete-artist__submit
+     {
+        text-align: center;
+        background-color: #000;
+        width: 729.5px ;
+        height: 40px;
+       color:#fff;
+     }
+     .edit-artist__submit:hover
+     {
+        text-align: center;
+        background-color: rgb(52, 134, 4);
+        width: 729.5px ;
+        height: 50px;
+       color:#fff;
+     }
+     .delete-artist__submit:hover
+     {
+        text-align: center;
+        background-color: rgb(201, 10, 10);
+        width: 729.5px ;
+        height: 50px;
+       color:#fff;
+     }
+
+     .update-artist , .update-song
+     {
+        border-collapse: separate;
+        border: darkorange;
+        text-align: center;
+        background-color: #000;
+        width: 1560.5px ;
+        height:700px;
+       color:#fff;
+       font-weight: 300;
+     }
+
+     .edit-song__submit , .delete-song__submit
+     {
+        text-align: center;
+        background-color: #000;
+        width: 729.5px ;
+        height: 40px;
+       color:#fff;
+
+     }
+
+     .edit-song__submit:hover
+     {
+        text-align: center;
+        background-color: rgb(52, 134, 4);
+        width: 729.5px ;
+        height: 50px;
+       color:#fff;
+     }
+     .delete-song__submit:hover
+     {
+        text-align: center;
+        background-color: rgb(201, 10, 10);
+        width: 729.5px ;
+        height: 50px;
+       color:#fff;
+     }
+     
+
+
